@@ -36,12 +36,9 @@
       - 해당하는 음식의 맛집들을 볼 수 있다.
    
  ## Flow Chart
-   <details>
-   <summary>기능 플로우 펼쳐보기</summary>
-   <div markdown="1">
+   <div>
      <img src="https://user-images.githubusercontent.com/59912499/89887350-0ed6dc80-dc09-11ea-8642-3d321f8da8b2.png">
    </div>
-   </details> 
 
 ## 🎨 Server
 
@@ -69,13 +66,9 @@
    -   crypto
 
 ## 🗃 Schema
-
-   <details>
-   <summary>스키마 펼쳐보기</summary>
-   <div markdown="1">
+   <div >
 <img width="500" src="https://user-images.githubusercontent.com/60249156/89888641-3fb81100-dc0b-11ea-84de-2c1bbd27a4b6.png">
    </div>
-   </details> 
 
 ## 🎨 Client
 
