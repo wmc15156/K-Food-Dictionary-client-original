@@ -1,11 +1,16 @@
 import React from 'react';
+import axios from 'axios';
 
-const Mypage = () => {
-    return (
-        <div>
-            <h1>Hi</h1>
-        </div>
-    )
+axios.defaults.withCredentials = true;
+
+export function Mypage(props) {
+    const { isLogin } = props;
+    if (isLogin) {
+        return (
+            <div>
+                <h1>Mypage</h1>
+            </div>
+        );
+    }
 }
 
-export default Mypage;
