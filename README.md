@@ -1,5 +1,5 @@
 
-<a href="https://gitmoji.carloscuesta.me"> <img src="https://img.shields.io/badge/gitmoji-%20😜%20😍-FFDD67.svg?style=flat-square" alt="Gitmoji?style=flat-square&logo=appveyor"> </a> <a href="https://github.com/codestates/Saekgalpi-ColorPalette"><img src ="https://img.shields.io/badge/github-Saekgalpi-lightgrey?style=flat-square&logo=appveyor"></a> <img src="https://img.shields.io/badge/npm-v6.14.4-important?style=flat-square&logo=appveyor"> <img src="https://img.shields.io/badge/node.js-v12.16.11-important?style=flat-square&logo=appveyor"> 
+<a href="https://gitmoji.carloscuesta.me"> <img src="https://img.shields.io/badge/gitmoji-%20😜%20😍-FFDD67.svg?style=flat-square" alt="Gitmoji?style=flat-square&logo=appveyor"> </a> <a href="https://github.com/codestates/Saekgalpi-ColorPalette"><img src ="https://img.shields.io/badge/github-kFood-lightgrey?style=flat-square&logo=appveyor"></a> <img src="https://img.shields.io/badge/npm-v6.14.4-important?style=flat-square&logo=appveyor"> <img src="https://img.shields.io/badge/node.js-v12.16.11-important?style=flat-square&logo=appveyor"> 
 
 # 🎨 K-Food-Dictionary-server
 
@@ -11,7 +11,11 @@
 
 3. 사용자가 원하는 한국음식을 sns에 공유할 수 있다.
 
+
 # 💡 About 
+
+## Getting Started
+
 
 ## About Service  
    1. 로그인 / 로그아웃 / 회원가입
@@ -34,11 +38,31 @@
    
    7. 맛집 리스트 불러오기
       - 해당하는 음식의 맛집들을 볼 수 있다.
+      
+  
+## Step by step 
+   1. Bare Minimum Requirement
+      - 회원가입
+      - 로그인
+      - 로그아웃
+      - 즐겨찾기에 추가
+      - youtube영상 불러오기
+  
+   2. Advanced
+      - sns계정으로 로그인
+      - 관리자에 의한 음식 업로드
+      - sns에 공유하기
+      
+   3. Nightmare
+      - 맛집 리스트 불러오기
+      - tag기능
+      
    
  ## Flow Chart
    <div>
      <img src="https://user-images.githubusercontent.com/59912499/89887350-0ed6dc80-dc09-11ea-8642-3d321f8da8b2.png">
-   </div>
+   </div> 
+   
 
 ## 🎨 Server
 
@@ -65,11 +89,27 @@
    -   cookie parser
    -   dotenv
    -   crypto
+   
 
 ## 🗃 Schema
-   <div >
-<img width="500" src="https://user-images.githubusercontent.com/60249156/89888641-3fb81100-dc0b-11ea-84de-2c1bbd27a4b6.png">
+   <div>
+<img width="500" src="https://user-images.githubusercontent.com/60249156/90013882-18cc0e80-dce1-11ea-8afc-38dab1cd11b1.png">
    </div>
+   
+
+## 🗃 Schema 테이블 구조
+<details>
+   <summary>테이블 구조 </summary>
+   <div markdown="3">
+      <h2>user테이블 </h2>
+     <img src="https://user-images.githubusercontent.com/60249156/90020441-d7406100-dcea-11ea-86e9-abf59e8d3a91.png">
+      <h2>foodInfo테이블 </h2>
+     <img src="https://user-images.githubusercontent.com/60249156/90020655-17074880-dceb-11ea-8b92-ebd6e4e367b6.png">
+      <h2>user_foodInfo테이블 </h2>
+     <img src="https://user-images.githubusercontent.com/60249156/90020979-972dae00-dceb-11ea-8286-7bf545ffac13.png">
+   </div>
+  </details> 
+
 
 ## 🎨 Client
 
@@ -89,6 +129,7 @@
    -   SASS
    -   Styled-Component
    
+   
 # 🎨 Team rules
    -   Stand Up Meeting 필수 참석하기. (매일 10시~10시30분)
    -   잠은 꼭 6시간 이상 자기. (제정신으로 코딩하기)
@@ -101,13 +142,14 @@
    -   커밋 메시지는 "https://blog.ull.im/engineering/2019/03/10/logs-on-git.html" 규칙 따르기.
    -   Lint Rule - "eslint:recommended" Rule 따르기.
    -   Node 버전 - NVM v.12 사용하기.
-
+   
+   
 # 🎨 About Team
 
 ## 🌿 이호철
 **Team Leader, FrontEnd**  
 
-📧 Gmail :amiosae@gmail.com
+📧 Gmail :samiosae@gmail.com
 
 🆔 Github Id : @samiosae  
 
@@ -141,4 +183,3 @@
 🆔 Github Id : @rladbgus
 
 💡 Blog :https://yoohyeon.tistory.com/
-
