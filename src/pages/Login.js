@@ -2,6 +2,8 @@ import React from 'react';
 import { withRouter } from 'react-router-dom';
 import axios from 'axios';
 
+axios.defaults.withCredentials = true;
+
 class Login extends React.Component {
     constructor(props) {
         super(props);
@@ -17,7 +19,6 @@ class Login extends React.Component {
     };
     render() {
         const { email, password } = this.state;
-        // eslint-disable-next-line react/prop-types
         const { handleIsLoginChange } = this.props;
         return (
             <div>
@@ -33,7 +34,6 @@ class Login extends React.Component {
                                 })
                                 .then(() => {
                                     handleIsLoginChange();
-                                    // eslint-disable-next-line react/prop-types
                                     this.props.history.push('/');
                                 })
                                 .catch(err => console.log(err));
