@@ -1,17 +1,16 @@
-/* eslint-disable react/prop-types */
-/* eslint-disable no-unused-vars */
 import React from 'react';
-import { withRouter, Link, useHistory } from 'react-router-dom';
+import { withRouter } from 'react-router-dom';
 import axios from 'axios';
 
 axios.defaults.withCredentials = true;
-class Signup extends React.Component {
+
+class Login extends React.Component {
     constructor(props) {
         super(props);
+
         this.state = {
             email: '',
-            password: '',
-            username: ''
+            password: ''
         };
         this.handleInputValue = this.handleInputValue.bind(this);
     }
@@ -19,22 +18,22 @@ class Signup extends React.Component {
         this.setState({ [key]: e.target.value });
     };
     render() {
-        const { email, password, mobile, username } = this.state;
+        const { email, password } = this.state;
+        const { handleIsLoginChange } = this.props;
         return (
             <div>
                 <center>
-                    <h1>Sign Up</h1>
+                    <h1>Member Login</h1>
                     <form
                         onSubmit={e => {
                             e.preventDefault();
-                            axios
-                                .post('http://3.34.193.46:5000/user/signup', {
+                            return axios
+                                .post('http://3.34.193.46:5000/user/login', {
                                     email: email,
-                                    password: password,
-                                    username: username,
-                                    mobile: mobile
+                                    password: password
                                 })
-                                .then(res => {
+                                .then(() => {
+                                    handleIsLoginChange();
                                     this.props.history.push('/');
                                 })
                                 .catch(err => console.log(err));
@@ -50,7 +49,7 @@ class Signup extends React.Component {
                                     borderRadius: '5px'
                                 }}
                                 type="email"
-                                placeholder="Email"
+                                placeholder="Eamil"
                                 onChange={this.handleInputValue('email')}
                             ></input>
                         </div>
@@ -62,47 +61,24 @@ class Signup extends React.Component {
                                     margin: '5px',
                                     borderRadius: '5px'
                                 }}
-                                onChange={this.handleInputValue('password')}
                                 type="password"
                                 placeholder="Password"
+                                onChange={this.handleInputValue('password')}
                             ></input>
                         </div>
-                        <div>
-                            <input
-                                style={{
-                                    width: '195px',
-                                    height: '30px',
-                                    margin: '5px',
-                                    borderRadius: '5px'
-                                }}
-                                onChange={this.handleInputValue('username')}
-                                placeholder="Username"
-                            ></input>
-                            <input
-                                style={{
-                                    width: '195px',
-                                    height: '30px',
-                                    margin: '5px',
-                                    borderRadius: '5px'
-                                }}
-                                type="mobile"
-                                onChange={this.handleInputValue('mobile')}
-                                placeholder="Mobile"
-                            ></input>
-                        </div>
-
                         <button
                             style={{
                                 width: '200px',
                                 height: '30px',
                                 margin: '5px',
                                 borderRadius: '5px',
-                                backgroundColor: 'lightblack'
+                                backgroundColor: 'lightblack',
+                                color: "black"
                             }}
                             type="submit"
                         >
-                            Signup
-            </button>
+                            Login
+                </button>
                     </form>
                 </center>
             </div>
@@ -110,4 +86,5 @@ class Signup extends React.Component {
     }
 }
 
-export default withRouter(Signup);
+export default withRouter(Login);
+
