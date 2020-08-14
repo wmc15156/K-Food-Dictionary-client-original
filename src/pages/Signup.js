@@ -11,7 +11,8 @@ class Signup extends React.Component {
         this.state = {
             email: '',
             password: '',
-            username: ''
+            username: '',
+            mobile: ''
         };
         this.handleInputValue = this.handleInputValue.bind(this);
     }
@@ -28,16 +29,15 @@ class Signup extends React.Component {
                         onSubmit={e => {
                             e.preventDefault();
                             axios
-                                .post('http://3.34.193.46:5000/user/signup', {
-                                    email: email,
-                                    password: password,
-                                    username: username,
-                                    mobile: mobile
-                                })
+                                .post('http://3.34.193.46:5000/user/signup', this.state)
                                 .then(res => {
-                                    this.props.history.push('/');
+                                    if (res.status === 200) {
+                                        alert('가입이 완료되었습니다^^')
+                                        this.props.history.push('/signin')
+                                    }
                                 })
-                                .catch(err => console.log(err));
+                                .catch(err => console.log(err),
+                                    alert('가입에 실패했습니다.'));
                         }}
                     >
 
