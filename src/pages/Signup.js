@@ -1,8 +1,8 @@
 /* eslint-disable react/prop-types */
 /* eslint-disable no-unused-vars */
-import React from 'react';
-import { withRouter, Link, useHistory } from 'react-router-dom';
-import axios from 'axios';
+import React from "react";
+import { withRouter, Link, useHistory } from "react-router-dom";
+import axios from "axios";
 
 axios.defaults.withCredentials = true;
 class Signup extends React.Component {

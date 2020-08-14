@@ -1,6 +1,6 @@
-import React from 'react';
-import { Link } from 'react-router-dom';
-import crabImg from '../images/crab.jpg'
+import React from "react";
+import { Link } from "react-router-dom";
+import crabImg from "../images/crab.jpg"
 
 class Home extends React.Component {
     render() {

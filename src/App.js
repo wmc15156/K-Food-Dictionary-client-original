@@ -1,12 +1,11 @@
-import React from 'react';
-import img from './images/logo.jpg';
-import { Switch, Route, Redirect, BrowserRouter } from 'react-router-dom';
-import Login from './pages/Login';
-import Signup from './pages/Signup';
-import { Mypage } from './pages/Mypage';
-import axios from 'axios';
-import NavTop from './pages/NavTop';
-import Main from './pages/Main';
+import React from "react";
+import { Switch, Route, Redirect, BrowserRouter } from "react-router-dom";
+import Login from "./pages/Login";
+import Signup from "./pages/Signup";
+import Mypage from "./pages/Mypage";
+import axios from "axios";
+import NavTop from "./pages/NavTop";
+import Main from "./pages/Main";
 import "./App.css";
 
 
@@ -31,8 +30,6 @@ class App extends React.Component {
 
       <div>
         <BrowserRouter>
-          <img className="mainPageLogo" src={img} alt="logo"></img>
-
           <NavTop></NavTop>
 
           <Main>

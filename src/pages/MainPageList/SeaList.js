@@ -1,10 +1,11 @@
-import React from 'react';
+import React from "react";
+import { Link } from "react-router-dom";
 
 class SeaList extends React.Component {
     render() {
         return (
             <div>
-                <h2 >해산물 페이지입니다.</h2>
+                <Link to="/contents">해산물 페이지입니다</Link>
             </div>
         )
     }

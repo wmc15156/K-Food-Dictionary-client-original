@@ -1,18 +1,16 @@
 .mainPageLogo {
     display: block;
     margin: auto;
-    max-width: 300px;
-    margin-top: 50px;
+    max-width: 100px;
     text-align: center;
 }
 
 .mainPageBox {
     background: linear-gradient( #ffffff67 30%, rgb(206, 197, 197) 70%);
     width: 80%;
-    height: 300px;
+    height: 1000px;
     margin: 100px auto;
-    margin-top: 100px;
-    /* margin-bottom: 100px; */
+    margin-top: 200px;
     text-align: center;
     font-size: 30px;
 }
@@ -21,7 +19,7 @@
     width: 80%;
     margin: 1px auto;
     height: 60px;
-    background: linear-gradient( #ffffff67 10%, rgb(128, 128, 128) 90%);
+    background: linear-gradient( #ffffff67 90%, rgb(128, 128, 128) 10%);
 }
 
 .link {
@@ -46,6 +44,6 @@
     display: block;
     margin: auto;
     width: 300px;
-    height: 200px;
+    height: auto;
 }
 
