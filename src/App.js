@@ -24,7 +24,7 @@ class Main extends React.Component {
 
   handleIsLoginChange() {
     this.setState({ isLogin: true });
-    axios.get('http://localhost:4000/user').then(res => {
+    axios.get('http://3.34.193.46:5000/user/info').then(res => {
       console.log(res.data);
       this.setState({ userinfo: res.data });
     });
