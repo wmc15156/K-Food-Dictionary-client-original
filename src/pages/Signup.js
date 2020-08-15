@@ -1,8 +1,11 @@
 /* eslint-disable react/prop-types */
 /* eslint-disable no-unused-vars */
-import React from 'react';
-import { withRouter, Link, useHistory } from 'react-router-dom';
-import axios from 'axios';
+import React from "react";
+import { withRouter, Link, useHistory } from "react-router-dom";
+import axios from "axios";
+
+// 이 페이지는 회원가입 페이지입니다.
+// 테스트는 http://localhost:4000/signup 으로 잘 되는걸 확인했습니다.
 
 axios.defaults.withCredentials = true;
 class Signup extends React.Component {
@@ -28,84 +31,48 @@ class Signup extends React.Component {
                         onSubmit={e => {
                             e.preventDefault();
                             axios
-                                .post('http://3.34.193.46:5000/user/signup', {
+                                .post('http://localhost:4000/signup', {
                                     email: email,
                                     password: password,
                                     username: username,
                                     mobile: mobile
                                 })
                                 .then(res => {
-                                    this.props.history.push('/');
+                                    this.props.history.push('/login');
                                 })
                                 .catch(err => console.log(err));
                         }}
                     >
 
                         <div>
-                            <input
-                                style={{
-                                    width: '400px',
-                                    height: '30px',
-                                    margin: '5px',
-                                    borderRadius: '5px'
-                                }}
-                                type="email"
-                                placeholder="Email"
-                                onChange={this.handleInputValue('email')}
-                            ></input>
-                        </div>
-                        <div>
-                            <input
-                                style={{
-                                    width: '400px',
-                                    height: '30px',
-                                    margin: '5px',
-                                    borderRadius: '5px'
-                                }}
-                                onChange={this.handleInputValue('password')}
-                                type="password"
-                                placeholder="Password"
-                            ></input>
-                        </div>
-                        <div>
-                            <input
-                                style={{
-                                    width: '195px',
-                                    height: '30px',
-                                    margin: '5px',
-                                    borderRadius: '5px'
-                                }}
-                                onChange={this.handleInputValue('username')}
+                            <input className="inputForm"
                                 placeholder="Username"
-                            ></input>
-                            <input
-                                style={{
-                                    width: '195px',
-                                    height: '30px',
-                                    margin: '5px',
-                                    borderRadius: '5px'
-                                }}
-                                type="mobile"
-                                onChange={this.handleInputValue('mobile')}
-                                placeholder="Mobile"
-                            ></input>
+                                onChange={this.handleInputValue('username')}
+                            >
+                            </input>
                         </div>
 
-                        <button
-                            style={{
-                                width: '200px',
-                                height: '30px',
-                                margin: '5px',
-                                borderRadius: '5px',
-                                backgroundColor: 'lightblack'
-                            }}
-                            type="submit"
-                        >
+                        <div>
+                            <input className="inputForm" type="email"
+                                placeholder="Email"
+                                onChange={this.handleInputValue('email')}>
+                            </input>
+                        </div>
+
+                        <div>
+                            <input className="inputForm"
+                                type="password"
+                                placeholder="Password"
+                                onChange={this.handleInputValue('password')}>
+                            </input>
+                        </div>
+
+                        <button className="button" type="submit">
                             Signup
-            </button>
+                        </button>
                     </form>
                 </center>
-            </div>
+            </div >
         );
     }
 }
