@@ -4,9 +4,6 @@ import React from "react";
 import { withRouter, Link, useHistory } from "react-router-dom";
 import axios from "axios";
 
-// 이 페이지는 회원가입 페이지입니다.
-// 테스트는 http://localhost:4000/signup 으로 잘 되는걸 확인했습니다.
-
 axios.defaults.withCredentials = true;
 class Signup extends React.Component {
     constructor(props) {

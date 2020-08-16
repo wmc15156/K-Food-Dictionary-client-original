@@ -12,8 +12,6 @@ import SeaList from "./pages/MainPageList/SeaList"
 import MeatList from "./pages//MainPageList/MeatList"
 import GrainList from "./pages//MainPageList/GrainList"
 
-// App 에서는 각 페이지에서 링크 클릭시 해당 화면에 맞게 뿌려주기 위한 라우터들의 경로 모음 입니다. 
-// 로그인 상태에 따른 이동도 구현하기 위해 isLogin 상태를 주었습니다.
 // 로그인 시에만 admin 페이지로 갈 수 있는 조건이 필요합니다.
 
 class Main extends React.Component {
@@ -29,10 +27,6 @@ class Main extends React.Component {
       this.setState({ userinfo: res.data });
     });
   }
-
-  // handleFacebookLogin(resp) {
-  //   console.log(resp);
-  // }
 
   render() {
     const { isLogin, userinfo } = this.state;
@@ -73,5 +67,3 @@ class Main extends React.Component {
   }
 }
 export default Main;
-
-//  handleFacebookLogin={this.handleFacebookLogin.bind(this)}
