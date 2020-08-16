@@ -10,7 +10,7 @@ import Contents from "./pages/Contents"
 import Home from "./pages/Home"
 import SeaList from "./pages/MainPageList/SeaList"
 import MeatList from "./pages//MainPageList/MeatList"
-import GrainList from "./pages//MainPageList/GrainList"
+import DessertList from "./pages//MainPageList/DessertList"
 
 // 로그인 시에만 admin 페이지로 갈 수 있는 조건이 필요합니다.
 
@@ -53,7 +53,7 @@ class Main extends React.Component {
 
           <Route exact path="/contents"><Contents /></Route>
 
-          <Route exact path="/grainList"><GrainList /></Route>
+          <Route exact path="/dessertList"><DessertList /></Route>
 
           <Route exact path="/meatList"><MeatList /></Route>
 
