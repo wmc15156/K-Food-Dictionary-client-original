@@ -30,9 +30,9 @@ class Main extends React.Component {
     });
   }
 
-  handleFacebookLogin(resp) {
-    console.log(resp);
-  }
+  // handleFacebookLogin(resp) {
+  //   console.log(resp);
+  // }
 
   render() {
     const { isLogin, userinfo } = this.state;
@@ -44,8 +44,7 @@ class Main extends React.Component {
 
           <Route exact path="/login"
             render={() => (<Login isLogin={isLogin}
-              handleIsLoginChange={this.handleIsLoginChange.bind(this)}
-              handleFacebookLogin={this.handleFacebookLogin.bind(this)} />)}
+              handleIsLoginChange={this.handleIsLoginChange.bind(this)} />)}
           />
 
           <Route exact path="/signup"
@@ -74,3 +73,5 @@ class Main extends React.Component {
   }
 }
 export default Main;
+
+//  handleFacebookLogin={this.handleFacebookLogin.bind(this)}
