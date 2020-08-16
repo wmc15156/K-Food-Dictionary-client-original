@@ -15,16 +15,20 @@ class Facebook extends React.Component {
 
     responseFacebook = (resp) => {
         console.log(resp);
-        alert('연결된 계정으로 로그인이 되었습니다.')
-        this.props.history.push('/mypage');
+        if (resp.status === "unknown") {
+            alert('계정이 존재하지 않습니다.')
+        } else {
+            alert('연결된 계정으로 로그인이 되었습니다.')
+            this.props.history.push('/mypage');
 
-        this.setState({
-            isLogIn: true,
-            name: resp.name,
-            userID: resp.userID,
-            email: resp.email,
-            picture: resp.picture.data.url
-        });
+            this.setState({
+                isLogIn: true,
+                name: resp.name,
+                userID: resp.userID,
+                email: resp.email,
+                picture: resp.picture.data.url
+            });
+        }
     }
 
     render() {
