@@ -2,6 +2,7 @@
 import React from "react";
 import { withRouter } from "react-router-dom";
 import axios from "axios";
+import FacebookLogin from "react-facebook-login";
 
 
 // 이 페이지는 로그인 페이지입니다.
@@ -29,7 +30,7 @@ class Login extends React.Component {
 
     render() {
         const { email, password } = this.state;
-        const { handleIsLoginChange } = this.props;
+        const { handleIsLoginChange, handleFacebookLogin } = this.props;
         return (
             <div>
                 <center>
@@ -67,10 +68,19 @@ class Login extends React.Component {
                                 onChange={this.handleInputValue('password')}>
                             </input>
                         </div>
-
                         <button className="button" type="submit">
                             Login
                         </button>
+
+                        <span className="fbLogin">
+                            <FacebookLogin
+                                appId="352284492474023"  // 생성한 앱아이디
+                                autoLoad={true}
+                                fields="name,email,picture"    // 페이스북에서 가져올 필드
+                                callback={handleFacebookLogin}    // 콜백함수 지정
+                                icon="fab fa-facebook"
+                            />
+                        </span>
 
                     </form>
                 </center>
@@ -78,6 +88,31 @@ class Login extends React.Component {
         );
     }
 }
+
+
+
+
+/* <script>
+  window.fbAsyncInit = function() {
+    FB.init({
+      appId      : '{352284492474023}',
+      cookie     : true,
+      xfbml      : true,
+      version    : '{v8.0}'
+    });
+      
+    FB.AppEvents.logPageView();   
+      
+  };
+
+  (function(d, s, id){
+     var js, fjs = d.getElementsByTagName(s)[0];
+     if (d.getElementById(id)) {return;}
+     js = d.createElement(s); js.id = id;
+     js.src = "https://connect.facebook.net/en_US/sdk.js";
+     fjs.parentNode.insertBefore(js, fjs);
+   }(document, 'script', 'facebook-jssdk'));
+</script> */
 
 export default withRouter(Login);
 

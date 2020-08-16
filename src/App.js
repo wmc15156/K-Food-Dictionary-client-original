@@ -30,6 +30,10 @@ class Main extends React.Component {
     });
   }
 
+  handleFacebookLogin(resp) {
+    console.log(resp);
+  }
+
   render() {
     const { isLogin, userinfo } = this.state;
     console.log(isLogin, userinfo, '로그인 여부와 유저 인포');
@@ -40,7 +44,8 @@ class Main extends React.Component {
 
           <Route exact path="/login"
             render={() => (<Login isLogin={isLogin}
-              handleIsLoginChange={this.handleIsLoginChange.bind(this)} />)}
+              handleIsLoginChange={this.handleIsLoginChange.bind(this)}
+              handleFacebookLogin={this.handleFacebookLogin.bind(this)} />)}
           />
 
           <Route exact path="/signup"
