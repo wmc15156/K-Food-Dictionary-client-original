@@ -20,7 +20,7 @@ class App extends React.Component {
     super(props)
 
     this.state = {
-      isLogin: true,
+      isLogin: false,
       userinfo: {},
       foods: [
         { id: 1, foodname: '삼겹살', sort: 'meat1', url: "https://bit.ly/2Cq602i" },
