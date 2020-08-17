@@ -4,12 +4,20 @@ import { Link } from 'react-router';
 
 class MeatList extends React.Component {
     render() {
-        let lists = [];
+        if (!this.props.isLogin) {
+            alert('로그인 후 이용 가능합니다.');
+            document.location.href = 'http://localhost:3000/login'
+        }
+        // console.log(this.props.favoritPost(0));
+        const { favoritPost } = this.props;
         const meatFoodDish = this.props.dish;
+
+        let lists = [];
 
         let i = 0;
         while (i < meatFoodDish.length) {
-            let url = `/contents/${meatFoodDish[i].id}`; // 세부 콘텐츠 페이지로 가야함.
+            let url = `/contents/: ${meatFoodDish[i].foodname}`; // 세부 콘텐츠 페이지로 가야함.
+            console.log(url)
             lists.push(
                 <div key={meatFoodDish[i].id} >
                     <Link to={url}>
@@ -17,8 +25,9 @@ class MeatList extends React.Component {
                             <img src={meatFoodDish[i].url} alt='seafoods'></img>
                         </p>
                         {meatFoodDish[i].foodname}
+                        <button onClick={() => favoritPost(0)} className="favoritBt"  >찜</button>
                     </Link>
-                </div>
+                </div >
             )
             i = i + 1;
         }

@@ -12,6 +12,7 @@ import SeaList from "./pages/MainPageList/SeaList"
 import MeatList from "./pages//MainPageList/MeatList"
 import DessertList from "./pages//MainPageList/DessertList"
 import OnboardNav from "./pages/OnboardNav"
+// import { Data } from './Data';
 
 // 로그인 시에만 admin 페이지로 갈 수 있는 조건이 필요합니다.
 
@@ -31,7 +32,6 @@ class App extends React.Component {
     };
   }
 
-
   handleIsLoginChange() {
     this.setState({ isLogin: true });
     axios.get('http://3.34.193.46:5000/user/info')
@@ -41,6 +41,7 @@ class App extends React.Component {
       });
   }
 
+  //로그아웃 기능
   handleIsLogoutChange() {
     this.setState({ isLogin: false });
     axios.post('http://3.34.193.46:5000/user/logout')
@@ -50,16 +51,28 @@ class App extends React.Component {
       })
   }
 
+  //찜클릭시 서버로 post
+  favoritPost(id) {
+    axios.post('http://3.34.193.46:5000/product/like/:productId', {
+      email: this.state.userinfo.email,
+      foodname: this.state.foods[id].foodname
+    })
+      .then(res => {
+        console.log(res)
+      })
+  }
+
+
   render() {
     const { isLogin, userinfo } = this.state;
     console.log(isLogin, userinfo, '로그인 여부와 유저 인포');
     return (
       <div>
-        <div>
-          <OnboardNav isLogin={this.state.isLogin}></OnboardNav>
-        </div>
-        <div className="mainPageBox">
+        <header>
+          <OnboardNav isLogin={isLogin}></OnboardNav>
+        </header>
 
+        <div className="mainPageBox">
           <Switch>
 
             <Route exact path="/login"
@@ -75,15 +88,15 @@ class App extends React.Component {
               render={() => <Mypage isLogin={isLogin} userinfo={userinfo} />}
             />
 
-            <Route exact path="/admin"><Admin /></Route>
+            <Route exact path="/admin"><Admin isLogin={isLogin} /></Route>
 
             <Route exact path="/contents"><Contents /></Route>
 
-            <Route exact path="/dessertList"><DessertList /></Route>
+            <Route exact path="/dessertList"><DessertList isLogin={isLogin} /></Route>
 
-            <Route exact path="/meatList"><MeatList dish={this.state.foods} /></Route>
+            <Route exact path="/meatList"><MeatList isLogin={isLogin} dish={this.state.foods} favoritPost={this.favoritPost.bind(this)} /></Route>
 
-            <Route exact path="/seafoodList"><SeaList /></Route>
+            <Route exact path="/seafoodList"><SeaList isLogin={isLogin} /></Route>
 
             <Route exact path="/"><Home /></Route>
 
