@@ -1,6 +1,6 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
-import Nav from "./pages/Nav";
+// import Nav from "./pages/Nav";
 import App from "./App";
 import "./style.css";
 import * as serviceWorker from './serviceWorker';
@@ -11,7 +11,6 @@ import { BrowserRouter } from 'react-router-dom';
 ReactDOM.render(
   <div>
     <BrowserRouter>
-      <Nav></Nav>
       <App></App>
     </BrowserRouter>
   </div>,
