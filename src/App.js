@@ -11,22 +11,26 @@ import Home from "./pages/Home"
 import SeaList from "./pages/MainPageList/SeaList"
 import MeatList from "./pages//MainPageList/MeatList"
 import DessertList from "./pages//MainPageList/DessertList"
-// import Nav from './pages/Nav'
-
+import OnboardNav from "./pages/OnboardNav"
 
 // 로그인 시에만 admin 페이지로 갈 수 있는 조건이 필요합니다.
 
 class App extends React.Component {
-  state = {
-    isLogin: false,
-    userinfo: {},
-    foods: [
-      { id: 1, foodname: '삼겹살', sort: 'meat1', url: "https://bit.ly/2Cq602i" },
-      { id: 2, foodname: '안심', sort: 'meat', url: "https://bit.ly/3iIVtPp" },
-      { id: 3, foodname: '닭다리', sort: 'meat', url: "https://bit.ly/33ZcoJ6" },
-      { id: 4, foodname: '오리', sort: 'meat', url: "https://bit.ly/2XZJdlH" }
-    ]
-  };
+  constructor(props) {
+    super(props)
+
+    this.state = {
+      isLogin: true,
+      userinfo: {},
+      foods: [
+        { id: 1, foodname: '삼겹살', sort: 'meat1', url: "https://bit.ly/2Cq602i" },
+        { id: 2, foodname: '안심', sort: 'meat', url: "https://bit.ly/3iIVtPp" },
+        { id: 3, foodname: '닭다리', sort: 'meat', url: "https://bit.ly/33ZcoJ6" },
+        { id: 4, foodname: '오리', sort: 'meat', url: "https://bit.ly/2XZJdlH" }
+      ]
+    };
+  }
+
 
   handleIsLoginChange() {
     this.setState({ isLogin: true });
@@ -50,18 +54,14 @@ class App extends React.Component {
     const { isLogin, userinfo } = this.state;
     console.log(isLogin, userinfo, '로그인 여부와 유저 인포');
     return (
+      <div>
+        <div>
+          <OnboardNav isLogin={this.state.isLogin}></OnboardNav>
+        </div>
+        <div className="mainPageBox">
 
+          <Switch>
 
-      <div className="mainPageBox">
-
-
-        <Switch>
-          {/* <header>
-            <Nav isLogin={isLogin}
-              handleIsLogoutChange={this.handleIsLogoutChange.bind(this)} />
-          </header> */}
-
-          <body>
             <Route exact path="/login"
               render={() => (<Login isLogin={isLogin}
                 handleIsLoginChange={this.handleIsLoginChange.bind(this)} />)}
@@ -86,12 +86,10 @@ class App extends React.Component {
             <Route exact path="/seafoodList"><SeaList /></Route>
 
             <Route exact path="/"><Home /></Route>
-          </body>
 
-        </Switch>
-
-
-      </div >
+          </Switch>
+        </div >
+      </div>
     );
   }
 }
