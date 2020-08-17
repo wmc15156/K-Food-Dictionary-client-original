@@ -5,18 +5,18 @@ import { Link } from 'react-router';
 class MeatList extends React.Component {
     render() {
         let lists = [];
-        const seaFoodDish = this.props.dish;
+        const meatFoodDish = this.props.dish;
 
         let i = 0;
-        while (i < seaFoodDish.length) {
-            let url = `/${seaFoodDish[i].sort}`; // 콘텐츠 페이지로 가야함.≤÷
+        while (i < meatFoodDish.length) {
+            let url = `/contents/${meatFoodDish[i].id}`; // 세부 콘텐츠 페이지로 가야함.
             lists.push(
-                <div>
+                <div key={meatFoodDish[i].id} >
                     <Link to={url}>
                         <p>
-                            <img src={seaFoodDish[i].url} alt='seafoods'></img>
+                            <img src={meatFoodDish[i].url} alt='seafoods'></img>
                         </p>
-                        {seaFoodDish[i].foodname}
+                        {meatFoodDish[i].foodname}
                     </Link>
                 </div>
             )
