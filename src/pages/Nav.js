@@ -8,6 +8,7 @@ import img from "../images/logo.jpg";
 
 class Nav extends React.Component {
     render() {
+        console.log(this.props)
         return (
             <div>
                 <div className="NavBar">

@@ -26,6 +26,7 @@ class Login extends React.Component {
     render() {
         const { email, password } = this.state;
         const { handleIsLoginChange } = this.props;
+
         return (
             <div>
                 <center>
