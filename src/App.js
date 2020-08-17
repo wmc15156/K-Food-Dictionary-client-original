@@ -14,10 +14,16 @@ import DessertList from "./pages//MainPageList/DessertList"
 
 // 로그인 시에만 admin 페이지로 갈 수 있는 조건이 필요합니다.
 
-class Main extends React.Component {
+class App extends React.Component {
   state = {
     isLogin: false,
-    userinfo: {}
+    userinfo: {},
+    foods: [
+      { id: 1, foodname: '삼겹살', sort: 'meat1', url: "https://bit.ly/2Cq602i" },
+      { id: 2, foodname: '안심', sort: 'meat', url: "https://bit.ly/3iIVtPp" },
+      { id: 3, foodname: '닭다리', sort: 'meat', url: "https://bit.ly/33ZcoJ6" },
+      { id: 4, foodname: '오리', sort: 'meat', url: "https://bit.ly/2XZJdlH" }
+    ]
   };
 
   handleIsLoginChange() {
@@ -55,7 +61,7 @@ class Main extends React.Component {
 
           <Route exact path="/dessertList"><DessertList /></Route>
 
-          <Route exact path="/meatList"><MeatList /></Route>
+          <Route exact path="/meatList"><MeatList dish={this.state.foods} /></Route>
 
           <Route exact path="/seafoodList"><SeaList /></Route>
 
@@ -66,4 +72,4 @@ class Main extends React.Component {
     );
   }
 }
-export default Main;
+export default App;
