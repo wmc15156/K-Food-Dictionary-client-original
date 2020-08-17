@@ -1,26 +1,37 @@
-import React from "react";
-import { Link } from "react-router-dom";
-import crabImg from "../../images/crab.jpg"
-
-// 이 파일은 육류 리스트를 보여주는 페이지입니다
-// 하단의 이미지 링크들을 클릭시 육류 카테고리로 이동합니다. 
+import React from 'react';
+import PropTypes from 'prop-types';
+import { Link } from 'react-router';
 
 class MeatList extends React.Component {
     render() {
+        let lists = [];
+        const seaFoodDish = this.props.dish;
+
+        let i = 0;
+        while (i < seaFoodDish.length) {
+            let url = `/${seaFoodDish[i].sort}`; // 콘텐츠 페이지로 가야함.≤÷
+            lists.push(
+                <div>
+                    <Link to={url}>
+                        <p>
+                            <img src={seaFoodDish[i].url} alt='seafoods'></img>
+                        </p>
+                        {seaFoodDish[i].foodname}
+                    </Link>
+                </div>
+            )
+            i = i + 1;
+        }
         return (
             <div>
-                <h1>Meat Category</h1>
-                <Link to="/contents"></Link>
-                <Link to="/contents" className="link"><img id="categoryImage" src={crabImg} alt="main"></img>MEAT</Link>
-                <Link to="/contents" className="link"><img id="categoryImage" src={crabImg} alt="main"></img>MEAT</Link>
-                <Link to="/contents" className="link"><img id="categoryImage" src={crabImg} alt="main"></img>MEAT</Link>
-                <Link to="/contents" className="link"><img id="categoryImage" src={crabImg} alt="main"></img>MEAT</Link>
-                <Link to="/contents" className="link"><img id="categoryImage" src={crabImg} alt="main"></img>MEAT</Link>
-                <Link to="/contents" className="link"><img id="categoryImage" src={crabImg} alt="main"></img>MEAT</Link>
+                <h2 >육류 페이지입니다.</h2>
+                {lists}
             </div>
         )
     }
 }
+MeatList.propTypes = {
+    dish: PropTypes.array,
+};
 
 export default MeatList;
-
