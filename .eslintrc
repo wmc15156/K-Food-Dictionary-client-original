@@ -14,7 +14,10 @@
         "plugin:react/recommended"
     ],
     "plugins": [
-        "import"
+        "react"
     ],
-    "rules": {}
+    "rules": {
+        "prop-types": 0,
+        "react/prop-types": 0
+    }
 }

@@ -1,19 +1,64 @@
 import React from "react";
-
-// 이 페이지는 콘텐츠 페이지입니다. 
-// 아직 기능 구현 전이라 임의의 레이아웃만 짜놨습니다.
+import VideoPlayer from "./ContentsPageList/VideoPlayer";
+import VideoList from "./ContentsPageList/VideoList";
+import { searchYouTube } from "../pages/ContentsPageList/searchYouTube";
+import { YOUTUBE_API_KEY } from "../config/youtube";
 
 class Contents extends React.Component {
+    constructor(props) {
+        super(props);
+
+        this.state = {
+            videos: [],
+            currentVideo: null
+        };
+    }
+
+    componentDidMount() {
+        this.getYouTubeVideos("먹방");
+    }
+
+    getYouTubeVideos(query) {
+        var options = {
+            key: YOUTUBE_API_KEY,
+            query: query
+        };
+
+        searchYouTube(options, videos =>
+            this.setState({
+                videos: videos,
+                currentVideo: videos[0]
+            })
+        );
+    }
+
+    handleVideoListClick(video) {
+        this.setState({
+            currentVideo: video
+        });
+    }
+
     render() {
         return (
             <div>
-                <div id="leftSection">음식영상입니다</div>
-                <div id="rightSection">음식정보입니다</div>
-                <div id="videoList">비디오리스트입니다</div>
+                <div>
+                    <VideoPlayer video={this.state.currentVideo} />
+                </div>
+
+                <div className="favoriteBox">
+                    음식 정보
+                </div>
+
+                <div>
+                    <VideoList
+                        handleVideoListClick={this.handleVideoListClick.bind(
+                            this
+                        )}
+                        videos={this.state.videos}
+                    />
+                </div>
             </div>
         )
     }
 }
-
 export default Contents;
-
