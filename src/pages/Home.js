@@ -1,6 +1,8 @@
 import React from "react";
 import { Link } from "react-router-dom";
-import crabImg from "../images/crab.jpg"
+import meatImg from "../images/meat.jpg";
+import seafoodImg from "../images/seafood.jpg";
+import dessertImg from "../images/dessert.jpg";
 
 // 이 페이지는 홈 페이지입니다.
 // 대분류 카테고리로써 세가지의 이미지 분류로 나눴습니다.
@@ -12,18 +14,18 @@ class Home extends React.Component {
         return (
             <div>
                 <h1>Home page</h1>
-                <Link to="/grainList" className="link">
-                    <img id="mainPageImage" src={crabImg} alt="main"></img>
-                    GRAIN
+                <Link to="/dessertList" className="link">
+                    <img id="mainPageImage" src={dessertImg} alt="main"></img>
+                    DESSERT
                 </Link>
 
                 <Link to="/seafoodList" className="link">
-                    <img id="mainPageImage" src={crabImg} alt="main"></img>
+                    <img id="mainPageImage" src={seafoodImg} alt="main"></img>
                     SEAFOOD
                 </Link>
 
                 <Link to="/meatList" className="link">
-                    <img id="mainPageImage" src={crabImg} alt="main"></img>
+                    <img id="mainPageImage" src={meatImg} alt="main"></img>
                     MEAT
                 </Link>
             </div >
