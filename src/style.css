@@ -72,6 +72,12 @@
     color: black;
 }
 
+.invalid-feedback {
+    font-size: 15px;
+    font-family: monospace;
+    color: red;
+}
+
 #videoList {
     margin: 0px;
     padding: 5px;

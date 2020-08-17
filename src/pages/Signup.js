@@ -19,6 +19,36 @@ class Signup extends React.Component {
     handleInputValue = key => e => {
         this.setState({ [key]: e.target.value });
     };
+
+    handleOnConfirmPasswordInput(confirmPasswordInput) {
+        this.setState({ confirmPassword: confirmPasswordInput });
+    }
+
+    doesPasswordMatch() {
+        const { password, confirmPassword } = this.state;
+        return password === confirmPassword;
+    }
+
+    confirmPasswordClassName() {
+        const { confirmPassword } = this.state;
+
+        if (confirmPassword) {
+            return this.doesPasswordMatch() ? 'is-valid' : 'is-invalid';
+        }
+    }
+
+    renderFeedbackMessage() {
+        const { confirmPassword } = this.state;
+
+        if (confirmPassword) {
+            if (!this.doesPasswordMatch()) {
+                return (
+                    <div className="invalid-feedback">The password does not match</div>
+                );
+            }
+        }
+    }
+
     render() {
         const { email, password, mobile, username } = this.state;
         return (
@@ -49,7 +79,7 @@ class Signup extends React.Component {
 
                         <div>
                             <input className="inputForm"
-                                placeholder="Username"
+                                placeholder="User Name"
                                 onChange={this.handleInputValue('username')}
                             >
                             </input>
@@ -68,6 +98,19 @@ class Signup extends React.Component {
                                 placeholder="Password"
                                 onChange={this.handleInputValue('password')}>
                             </input>
+                        </div>
+
+                        <div >
+                            <input
+                                type="password"
+                                className="inputForm"
+                                id="confirmPasswordInput"
+                                placeholder="Password Confirm"
+                                onChange={e =>
+                                    this.handleOnConfirmPasswordInput(e.target.value)
+                                }
+                            />
+                            {this.renderFeedbackMessage()}
                         </div>
 
                         <button className="button" type="submit">
