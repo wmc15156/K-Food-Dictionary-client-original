@@ -1,4 +1,5 @@
 /* eslint-disable react/prop-types */
+
 import React from "react";
 import { withRouter } from "react-router-dom";
 import axios from "axios";
@@ -9,14 +10,28 @@ axios.defaults.withCredentials = true;
 // 로그인 안되 있는 상태에서 mypage 들어올 시 로그인 안되어있다는 안내 후 로그인페이지로 
 
 class Mypage extends React.Component {
+    constructor(props) {
+        super(props);
+
+        this.state = {
+            email: '',
+            password: ''
+        };
+    }
 
     render() {
+        if (!this.props.isLogin) {
+            alert('로그인 후 이용 가능합니다.');
+            document.location.href = 'http://localhost:3000/login'
+        }
+
         function AdminPage(e) {
             e.preventDefault();
             window.location = 'http://localhost:3000/admin';
         }
 
         return (
+
             <div>
                 <h1>Mypage</h1>
                 <form
@@ -25,9 +40,10 @@ class Mypage extends React.Component {
                         axios
                             .post('http://3.34.193.46:5000/user/logout', this.state)
                             .then(res => {
+                                // console.log(res)
                                 if (res.status === 302) {
                                     alert('로그아웃이 완료되었습니다')
-                                    this.props.history.push('/login')
+                                    this.props.history.push('/')
                                 }
                             })
                             .catch(err =>
