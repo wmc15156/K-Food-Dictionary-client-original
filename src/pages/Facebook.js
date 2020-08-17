@@ -15,7 +15,7 @@ class Facebook extends React.Component {
 
     responseFacebook = (resp) => {
         console.log(resp);
-        if (resp.status === "unknown") {
+        if (resp.status === "unknown" || resp.status === "undefined") {
             alert('계정이 존재하지 않습니다.')
         } else {
             alert('연결된 계정으로 로그인이 되었습니다.')
