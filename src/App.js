@@ -23,7 +23,7 @@ class App extends React.Component {
     super(props)
 
     this.state = {
-      isLogin: true,
+      isLogin: false,
       userinfo: {},
       foods: [
         { id: 1, foodname: '삼겹살', sort: 'meat1', url: "https://bit.ly/2Cq602i" },
@@ -36,8 +36,7 @@ class App extends React.Component {
 
   //로그인시 상태,유저정보 업데이트
   handleIsLoginChange() {
-    if (this.isLogin)
-      this.setState({ isLogin: true });
+    this.setState({ isLogin: true });
     axios.get('http://3.34.193.46:5000/user/info')
       .then(res => {
         console.log(res);
