@@ -4,7 +4,6 @@ import img from "../images/logo.jpg";
 
 class LogInNav extends React.Component {
     render() {
-        console.log(this.props.isLogin)
         return (
             <div>
                 <div className="NavBar">
@@ -21,5 +20,3 @@ class LogInNav extends React.Component {
 }
 
 export default LogInNav;
-
-/* <Link to="/logout" className="link" onClick={handleIsLogoutChange}>Logout</Link> */
