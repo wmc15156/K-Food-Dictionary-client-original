@@ -1,3 +1,4 @@
+/* eslint-disable react/prop-types */
 
 import React, { useState } from 'react'
 import Dropzone from 'react-dropzone' // 해당부분 클릭시 사진 업로드 되는 모듈
@@ -63,7 +64,7 @@ function FileUpload(props) {
                 {Images.map((image, index) => (
                     <div key={image + index} onClick={() => deleteHandler(image)}>
                         <img style={{ minWidth: '300px', width: '300px', height: '240px' }}
-                            src={`${image}`}
+                            src={`${image}`} alt="profile"
                         />
                     </div>
                 ))}

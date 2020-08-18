@@ -14,6 +14,7 @@ import DessertList from "./pages//MainPageList/DessertList"
 import OnboardNav from "./pages/OnboardNav";
 import NotFound from "./pages/NotFound";
 import LogOut from "./pages/LogOut";
+import LogInNav from "./pages/LogInNav";
 
 // 로그인 시에만 admin 페이지로 갈 수 있는 조건이 필요합니다.
 
@@ -22,7 +23,7 @@ class App extends React.Component {
     super(props)
 
     this.state = {
-      isLogin: false,
+      isLogin: true,
       userinfo: {},
       foods: [
         { id: 1, foodname: '삼겹살', sort: 'meat1', url: "https://bit.ly/2Cq602i" },
@@ -35,7 +36,8 @@ class App extends React.Component {
 
   //로그인시 상태,유저정보 업데이트
   handleIsLoginChange() {
-    this.setState({ isLogin: true });
+    if (this.isLogin)
+      this.setState({ isLogin: true });
     axios.get('http://3.34.193.46:5000/user/info')
       .then(res => {
         console.log(res);
@@ -44,14 +46,13 @@ class App extends React.Component {
       });
   }
 
+
   //로그아웃 기능
   handleIsLogoutChange() {
     this.setState({ isLogin: false });
     axios.post('http://3.34.193.46:5000/user/logout')
       .then(res => {
         console.log(res)
-        alert('로그아웃이 완료되었습니다')
-        window.location = 'http://localhost:3000/';
       })
   }
 
@@ -88,12 +89,12 @@ class App extends React.Component {
                 handleIsLoginChange={this.handleIsLoginChange.bind(this)} />)}
             />
             <Route exact path="/signup"
-              render={() => <Signup isLogin={isLogin} handleIsLogoutChange={this.handleIsLogoutChange.bind(this)} />}
+              render={() => <Signup isLogin={isLogin} />}
             />
             <Route exact path="/mypage"
               render={() => <Mypage isLogin={isLogin} userinfo={userinfo} />}
             />
-            <Route exact path="/logout" render={() => <LogOut isLogin={isLogin} />} />
+            <Route exact path="/logout" render={() => <LogOut isLogin={isLogin} handleIsLogoutChange={this.handleIsLogoutChange.bind(this)} />} />
             <Route exact path="/admin"><Admin /></Route>
             <Route exact path="/contents"><Contents /></Route>
             <Route exact path="/dessertList"><DessertList isLogin={isLogin} /></Route>
