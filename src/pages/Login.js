@@ -26,6 +26,7 @@ class Login extends React.Component {
     render() {
         const { email, password } = this.state;
         const { handleIsLoginChange } = this.props;
+
         return (
             <div>
                 <center>
@@ -40,8 +41,9 @@ class Login extends React.Component {
                                     email: email,
                                     password: password
                                 })
-                                .then(() => {
+                                .then((res) => {
                                     handleIsLoginChange();
+                                    console.log(res.data);
                                     this.props.history.push('/mypage');
                                 })
                                 .catch(err => console.log(err));
