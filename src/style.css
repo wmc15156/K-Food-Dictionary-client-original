@@ -52,7 +52,7 @@
 .favoriteFood {
     margin: 0px;
     padding: 5px;
-    height: 500px;
+    /* height: 500px; */
     background-color: rgb(190, 190, 190);
 }
 

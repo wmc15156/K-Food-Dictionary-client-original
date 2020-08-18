@@ -32,10 +32,12 @@ class App extends React.Component {
     };
   }
 
+  //로그인시 상태,유저정보 업데이트
   handleIsLoginChange() {
     this.setState({ isLogin: true });
     axios.get('http://3.34.193.46:5000/user/info')
       .then(res => {
+        console.log(res);
         console.log(res.data);
         this.setState({ userinfo: res.data });
       });
@@ -48,19 +50,25 @@ class App extends React.Component {
       .then(res => {
         console.log(res)
         alert('로그아웃이 완료되었습니다')
+        window.location = 'http://localhost:3000/';
       })
   }
 
   //찜클릭시 서버로 post
   favoritPost(id) {
-    axios.post('http://3.34.193.46:5000/product/like/:productId', {
-      email: this.state.userinfo.email,
+    console.log(this.state.userinfo.email);
+    console.log(this.state.foods[0].foodname);
+    axios.post('http://localhost:5000/product/like/삼겹살', {
+      email: '1@1',
       foodname: this.state.foods[id].foodname
     })
       .then(res => {
         console.log(res)
       })
   }
+
+  //mypage에 찜목록 렌더링
+  favoritGet
 
 
   render() {
@@ -81,7 +89,7 @@ class App extends React.Component {
             />
 
             <Route exact path="/signup"
-              render={() => <Signup isLogin={isLogin} />}
+              render={() => <Signup isLogin={isLogin} handleIsLogoutChange={this.handleIsLogoutChange.bind(this)} />}
             />
 
             <Route exact path="/mypage"
