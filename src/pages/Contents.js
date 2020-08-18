@@ -1,10 +1,10 @@
-import React from "react";
-import VideoPlayer from "./ContentsPageList/VideoPlayer";
-import VideoList from "./ContentsPageList/VideoList";
-import { searchYouTube } from "../pages/ContentsPageList/searchYouTube";
-import { YOUTUBE_API_KEY } from "../config/youtube";
+import React, { Component } from 'react';
+import YTSearch from 'youtube-api-search';
+import VideoList from './ContentsPage/video_list'
+import VideoPlayer from './ContentsPage/video-player';
+const API_KEY = "YOUR_API_KEY"
 
-class Contents extends React.Component {
+class Contents extends Component {
     constructor(props) {
         super(props);
 
@@ -12,32 +12,20 @@ class Contents extends React.Component {
             videos: [],
             currentVideo: null
         };
+
+        this.videoSearch('먹방');
     }
 
-    componentDidMount() {
-        this.getYouTubeVideos("먹방");
-    }
-
-    getYouTubeVideos(query) {
-        var options = {
-            key: YOUTUBE_API_KEY,
-            query: query
-        };
-
-        searchYouTube(options, videos =>
+    videoSearch(searchTerm) {
+        YTSearch({ key: API_KEY, term: searchTerm }, (data) => {
+            console.log(data);
             this.setState({
-                videos: videos,
-                currentVideo: videos[0]
-            })
-        );
-    }
-
-    handleVideoListClick(video) {
-        this.setState({
-            currentVideo: video
+                videos: data,
+                currentVideo: data[0]
+            });
         });
-    }
 
+    }
     render() {
         return (
             <div>
@@ -45,20 +33,16 @@ class Contents extends React.Component {
                     <VideoPlayer video={this.state.currentVideo} />
                 </div>
 
-                <div className="favoriteBox">
-                    음식 정보
-                </div>
+                <div>음식정보</div>
 
                 <div>
                     <VideoList
-                        handleVideoListClick={this.handleVideoListClick.bind(
-                            this
-                        )}
-                        videos={this.state.videos}
-                    />
+                        onVideoSelect={userSelected => this.setState({ currentVideo: userSelected })}
+                        videos={this.state.videos} />
                 </div>
             </div>
-        )
+        );
     }
 }
+
 export default Contents;
