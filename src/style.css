@@ -1,3 +1,4 @@
+
 .mainPageLogo {
     display: inline-block;
     margin: auto;
@@ -5,8 +6,8 @@
 }
 
 .mainPageBox {
-    background: linear-gradient( #ffffff67 70%, rgb(236, 235, 235) 30%);
-    height: 500px;
+    background-color: rgb(240, 240, 240);
+    height: 100%;
     width: 80%;
     margin: 100px auto;
     text-align: center;
@@ -72,27 +73,11 @@
     color: black;
 }
 
-#videoList {
-    margin: 0px;
-    padding: 5px;
-    height: 200px;
-    background-color: #d0d8aa;
+.invalid-feedback {
+    font-size: 15px;
+    font-family: monospace;
+    color: red;
 }
-
-#leftSection {
-    margin: 0px;
-    padding: 5px;
-    height: 500px;
-    width: 700px;
-    float: left;
-    background-color: rgb(138, 171, 233);
-  }
-  #rightSection {
-    margin: 0px;
-    padding: 5px;
-    height: 500px;
-    background-color: rgb(143, 85, 85);
-  }
 
 #mainPageImage {
     display: block;
@@ -108,4 +93,46 @@
 
 .fbLogin{
     width: 20px;
+}
+
+.video-player {
+  padding: 5px;
+  height: 500px;
+  width: 60%;
+  float: left;
+  border-style: solid;
+}
+
+.favoriteBox {
+    padding: 5px;
+    height: 500px;
+    width: 100%;
+}
+
+.video-list {
+  height: 100%;
+  width: 100%;
+  padding: 5px;
+  overflow-x: auto;
+}
+
+.video-list-entry {
+  font-size: 30px;
+  border-style:solid;
+}
+
+.video-list-entry-title {
+  font-weight: bolder;
+  font-size: 20px;
+}
+
+.video-list-entry-title:hover {
+  color: #f711115d;
+  cursor: pointer;
+}
+
+.thumbnails {
+  float:left;
+  width:10%;
+  height:30%;
 }
