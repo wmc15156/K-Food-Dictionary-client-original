@@ -33,17 +33,15 @@ class Mypage extends React.Component {
         //     window.location = 'http://localhost:3000/admin';
         // }
 
+        if (!this.props.isLogin) {
+            alert('로그인 후 이용 가능합니다.');
+            document.location.href = 'http://localhost:3000/login'
+        }
         return (
             <div>
                 <h1>Mypage</h1>
 
-                <div className="mypageBt">
-                    {/* <button className="adminBt" onClick={AdminPage}>
-                        Admin
-                        </button> */}
-
-                </div>
-                <div className="userInfo">유저 정보입니다</div>
+                {/* <div className="userInfo">유저 정보입니다</div> */}
                 <div className="favoriteFood">찜한 음식</div>
 
                 <span className="favoritFList">1</span>

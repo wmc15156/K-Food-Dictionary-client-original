@@ -9,10 +9,14 @@ class OnboardNav extends React.Component {
         this.isLogin = this.props.isLogin;
     }
     render() {
-        if (this.isLogin) {
-            return <LogInNav></LogInNav>
-        }
-        return <LogOutNav></LogOutNav>
+        return (<div className="NavBar">
+            {this.props.isLogin ? (
+                <LogInNav></LogInNav>
+            ) : (
+                    <LogOutNav></LogOutNav>
+                )}
+        </div>
+        )
     }
 }
 
