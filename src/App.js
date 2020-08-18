@@ -50,6 +50,13 @@ class App extends React.Component {
       })
   }
 
+  componentDidMount() {
+    // 이부분은 테스트용도로 만들었습니다. -현진-
+    // 최초 업로드될때 유저정보를 불러와서 로그인상태여부 확인용도
+    // 에러 나는부분
+   console.log('로딩');
+   axios.get('http://localhost:5000/user/info')
+  }
   render() {
     const { isLogin, userinfo } = this.state;
     console.log(isLogin, userinfo, '로그인 여부와 유저 인포');
