@@ -4,6 +4,12 @@ import { Link } from "react-router-dom";
 // import Contents from '../Contents';
 
 class MeatList extends React.Component {
+    constructor(props) {
+        super(props)
+
+        const { handleFoodsChange } = this.props;
+        handleFoodsChange('고기');
+    }
 
     fixedFoodname(foodname) {
         let fixed = foodname;
@@ -20,10 +26,10 @@ class MeatList extends React.Component {
             console.log(foodname)
             let url = `contents/${foodname}`;
             lists.push(
-                <div>
+                <div key={meatFoodDish[i].id}>
                     <Link to={url} onClick={(foodname) => this.fixedFoodname(foodname)}>
                         <p>
-                            <img src={meatFoodDish[i].url} ></img>
+                            <img src={meatFoodDish[i].image} alt="foods"></img>
                         </p>
                     </Link>
                     <span>
