@@ -61,26 +61,11 @@ class App extends React.Component {
       })
   }
 
-  //마이페이지에 찜음식 랜더위한 get
-  //찜목록 음식데이터 가져옴
-  //음식이름으로 url만듬 (예 : http://localhost:3000/contents/삼겹살)
-  //그 음식을 클릭하면 그 url로 가게함
-
-  favoritGet() {
-    const user = JSON.parse(localStorage.getItem('user'));
-    axios.get('http://3.34.193.46:5000/product/sort/:productId/', { headers: { authorization: user } })
-      .then(res => {
-        console.log(res);
-        let url = `http://localhost:3000/contents/${res.fooodname}`
-        // document.location.href = { url };
-      })
-  }
-
   componentDidMount() {
     // 이부분은 테스트용도로 만들었습니다. -현진-
     // 최초 업로드될때 유저정보를 불러와서 로그인상태여부 확인용도
     // 에러 나는부분
-    console.log('로딩');
+    // console.log('로딩');
     axios.get('http://localhost:5000/user/info')
   }
 
@@ -100,7 +85,7 @@ class App extends React.Component {
               render={() => <Signup isLogin={isLogin} />}
             />
             <Route exact path="/mypage"
-              render={() => <Mypage isLogin={isLogin} userinfo={userinfo} favoritGet={this.favoritGet.bind(this)} />}
+              render={() => <Mypage isLogin={isLogin} userinfo={userinfo} />}
             />
             <Route exact path="/logout" render={() => <LogOut isLogin={isLogin} handleIsLogoutChange={this.handleIsLogoutChange.bind(this)} />} />
             <Route exact path="/admin"><Admin /></Route>
