@@ -31,36 +31,29 @@ class App extends React.Component {
     };
   }
 
-  //로그인시 상태,유저정보 업데이트
   handleIsLoginChange() {
     this.setState({ isLogin: true });
-    axios.get('http://3.34.193.46:5000/user/info')
+    const user = JSON.parse(localStorage.getItem('user'));
+    axios.get('http://3.34.193.46:5000/user/info', { headers: { authorization: user } })
       .then(res => {
-        console.log(res);
-        console.log(res.data);
         this.setState({ userinfo: res.data });
       });
   }
 
-  //로그아웃 기능
   handleIsLogoutChange() {
     this.setState({ isLogin: false });
-    axios.post('http://3.34.193.46:5000/user/logout')
-      .then(res => {
-        console.log(res)
-      })
+    localStorage.clear()
   }
 
-  //찜클릭시 서버로 post
-  favoritPost(id) {
-    console.log(this.state.userinfo.email);
-    console.log(this.state.foods[0].foodname);
+  //찜클릭시 서버로 저장
+  favoritPost(foodname) {
+    const user = JSON.parse(localStorage.getItem('user'));
 
-    axios.post('http://localhost:5000/product/like/:productId', {
-      foodname: this.state.foods[0].foodname
-    })
+    axios.get(`http://3.34.193.46:5000/product/like/${foodname}`,
+      { headers: { authorization: user } })
       .then(res => {
         console.log(res)
+        //버튼 찜표시로 바꾸기
       })
   }
 
@@ -70,7 +63,7 @@ class App extends React.Component {
   //그 음식을 클릭하면 그 url로 가게함
 
   favoritGet() {
-    axios.get('http://localhost:5000/product/sort/:productId/')
+    axios.get('http://3.34.193.46:5000/product/sort/:productId/')
       .then(res => {
         console.log(res);
         let url = `http://localhost:3000/contents/${res.fooodname}`
@@ -109,6 +102,7 @@ class App extends React.Component {
             <Route exact path="/meatList"><MeatList dish={this.state.foods} isLogin={isLogin} /></Route>
             <Route exact path="/dessertList"><DessertList isLogin={isLogin} /></Route>
             <Route exact path="/seafoodList"><SeaList isLogin={isLogin} /></Route>
+            <Route exact path="/contents/:name"><Contents favoritPost={this.favoritPost.bind(this)} dish={this.state.foods} /></Route>
             <Route exact path="/"><Home /></Route>
             <Route><NotFound /></Route>
           </Switch>
@@ -118,3 +112,4 @@ class App extends React.Component {
   }
 }
 export default App;
+
