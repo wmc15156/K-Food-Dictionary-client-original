@@ -14,22 +14,20 @@ class SeaList extends React.Component {
     render() {
         var lists = [];
         const seaFoodDish = this.props.dish;
-        const { favoritPost } = this.props;
 
         let i = 0;
         while (i < seaFoodDish.length) {
             let url = `http://localhost:3000/contents/${seaFoodDish[i].foodname}`;
             lists.push(
                 <div key={seaFoodDish[i].id}>
-                    <a href={url}>
+                    <div href={url}>
                         <p>
                             <img src={seaFoodDish[i].image} alt='foods'></img>
                         </p>
-                    </a>
+                    </div>
                     <span>
                         {seaFoodDish[i].foodname}
                     </span>
-                    <button onClick={() => favoritPost(0)} className="favoritzBt" >찜</button>
                 </div>
             )
             i = i + 1;

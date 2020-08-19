@@ -20,7 +20,7 @@ class MeatList extends React.Component {
             let url = `contents/${foodname}`;
             lists.push(
                 <div key={meatFoodDish[i].id}>
-                    <Link to={url} onClick={(foodname) => this.fixedFoodname(foodname)}>
+                    <Link to={url}>
                         <p>
                             <img src={meatFoodDish[i].image} alt="foods"></img>
                         </p>
