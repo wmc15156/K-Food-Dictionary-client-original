@@ -10,13 +10,13 @@ class DessertList extends React.Component {
         return (
             <div>
                 <h1>Dessert Category</h1>
-                <Link to="/contents"></Link>
-                <Link to="/contents" className="link"><img id="categoryImage" src={dessertImg} alt="main"></img>Dessert</Link>
-                <Link to="/contents" className="link"><img id="categoryImage" src={dessertImg} alt="main"></img>Dessert</Link>
-                <Link to="/contents" className="link"><img id="categoryImage" src={dessertImg} alt="main"></img>Dessert</Link>
-                <Link to="/contents" className="link"><img id="categoryImage" src={dessertImg} alt="main"></img>Dessert</Link>
-                <Link to="/contents" className="link"><img id="categoryImage" src={dessertImg} alt="main"></img>Dessert</Link>
-                <Link to="/contents" className="link"><img id="categoryImage" src={dessertImg} alt="main"></img>Dessert</Link>
+                <Link to="/contents/1"></Link>
+                <Link to="/contents/2" className="link"><img id="categoryImage" src={dessertImg} alt="main"></img>Dessert</Link>
+                <Link to="/contents/3" className="link"><img id="categoryImage" src={dessertImg} alt="main"></img>Dessert</Link>
+                <Link to="/contents/4" className="link"><img id="categoryImage" src={dessertImg} alt="main"></img>Dessert</Link>
+                <Link to="/contents/5" className="link"><img id="categoryImage" src={dessertImg} alt="main"></img>Dessert</Link>
+                <Link to="/contents/6" className="link"><img id="categoryImage" src={dessertImg} alt="main"></img>Dessert</Link>
+                <Link to="/contents/7" className="link"><img id="categoryImage" src={dessertImg} alt="main"></img>Dessert</Link>
             </div>
         )
     }

@@ -1,3 +1,4 @@
+/* eslint-disable react/prop-types */
 
 import React, { useState } from 'react'
 import Dropzone from 'react-dropzone' // 해당부분 클릭시 사진 업로드 되는 모듈
@@ -8,7 +9,7 @@ import axios from 'axios';
 function FileUpload(props) {
     // state 관리
     const [Images, setImages] = useState([])
-    
+
     const dropHandler = (files) => {
 
         let formData = new FormData();
@@ -46,7 +47,7 @@ function FileUpload(props) {
     }
 
     return (
-      //Dropzone 부분은 npm 공식문서에 있는 부분 복사 / 붙여넣기 하였습니다.
+        //Dropzone 부분은 npm 공식문서에 있는 부분 복사 / 붙여넣기 하였습니다.
         <div style={{ display: 'flex', justifyContent: 'center' }}>
           
             <Dropzone onDrop={dropHandler}>
@@ -58,16 +59,16 @@ function FileUpload(props) {
                         }}
                         {...getRootProps()}>
                         <input {...getInputProps()} />
-                        <PlusOutlined type="plus" style={{ fontSize: '3rem' }} /> 
+                        <PlusOutlined type="plus" style={{ fontSize: '3rem' }} />
                     </div>
                 )}
             </Dropzone>
-            <div style={{display:"flex",width: '350px', height: '240px', overflowX: 'scroll', position:'relative', left:'10px' }}>
-                  {/* 현재 Image 스테이트에 있는 값들을 img태그를 이용하여 구현 // src에 있는부분은 서버주소이어야함 */}
+            <div style={{ display: "flex", width: '350px', height: '240px', overflowX: 'scroll', position: 'relative', left: '10px' }}>
+                {/* 현재 Image 스테이트에 있는 값들을 img태그를 이용하여 구현 // src에 있는부분은 서버주소이어야함 */}
                 {Images.map((image, index) => (
-                    <div key={image + index}onClick={() => deleteHandler(image)}>
+                    <div key={image + index} onClick={() => deleteHandler(image)}>
                         <img style={{ minWidth: '300px', width: '300px', height: '240px' }}
-                            src={`${image}`}
+                            src={`${image}`} alt="profile"
                         />
                     </div>
                 ))}

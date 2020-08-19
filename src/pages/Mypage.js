@@ -22,6 +22,17 @@ class Mypage extends React.Component {
     }
 
     render() {
+        // if (!this.props.isLogin) {
+        //     alert('로그인 후 이용 가능합니다.');
+        //     document.location.href = 'http://localhost:3000/login'
+        // }
+        console.log('로그인 여부 :' + this.props.isLogin)
+
+        // function AdminPage(e) {
+        //     e.preventDefault();
+        //     window.location = 'http://localhost:3000/admin';
+        // }
+
         if (!this.props.isLogin) {
             alert('로그인 후 이용 가능합니다.');
             document.location.href = 'http://localhost:3000/login'
@@ -32,6 +43,10 @@ class Mypage extends React.Component {
 
                 {/* <div className="userInfo">유저 정보입니다</div> */}
                 <div className="favoriteFood">찜한 음식</div>
+
+                <span className="favoritFList">1</span>
+
+
             </div>
         )
     }

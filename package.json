@@ -11,6 +11,7 @@
     "@types/react-router-dom": "^5.1.5",
     "antd": "^4.5.4",
     "axios": "0.19.2",
+    "dotenv": "^8.2.0",
     "react": "^16.13.1",
     "react-dom": "^16.13.1",
     "react-dropzone": "^11.0.3",
@@ -18,7 +19,8 @@
     "react-router": "^3.2.6",
     "react-router-dom": "^5.2.0",
     "react-scripts": "^3.4.3",
-    "webpack": "^4.42.0"
+    "webpack": "^4.42.0",
+    "youtube-api-search": "0.0.5"
   },
   "scripts": {
     "start": "react-scripts start",
