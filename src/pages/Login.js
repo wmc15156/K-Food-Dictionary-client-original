@@ -37,11 +37,12 @@ class Login extends React.Component {
                         onSubmit={e => {
                             e.preventDefault();
                             return axios
-                                .post('http://localhost:5000/user/login', {
+                                .post('http://3.34.193.46:5000/user/login', {
                                     email: email,
                                     password: password
                                 })
                                 .then((res) => {
+                                    localStorage.setItem('user', JSON.stringify(res.data.token));
                                     handleIsLoginChange();
                                     console.log(res.data);
                                     this.props.history.push('/mypage');
