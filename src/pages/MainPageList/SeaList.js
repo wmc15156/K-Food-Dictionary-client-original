@@ -16,7 +16,7 @@ class SeaList extends React.Component {
         let i = 0;
         while (i < seaFoodDish.length) {
             let foodname = seaFoodDish[i].foodname
-            let url = `contents/${foodname}`;
+            let url = `contents/${foodname}:${i}`;
             lists.push(
                 <div key={seaFoodDish[i].id}>
                     <Link to={url}>

@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import YTSearch from 'youtube-api-search';
 import VideoList from './ContentsPage/video_list'
 import VideoPlayer from './ContentsPage/video-player';
-
+import ContentsInfo from '../pages/ContentsPage/contentsInfo';
 const API_KEY = "AIzaSyDsBplF70B03q3MrF2tghZYnYt5IZcFgCI"
 const lastURL = window.location.href
 class Contents extends Component {
@@ -42,32 +42,21 @@ class Contents extends Component {
         const { favoritPost } = this.props;
 
         let lasturl = window.location.href.split('/')
-        let lastFoodname = decodeURI(lasturl[4])
+        let lastFoodnameNum = decodeURI(lasturl[4])
+        let lastFoodname = lastFoodnameNum.split(':')
+        console.log('음식이름', lastFoodname[0]);
+        let foodNum = lastFoodname[1]
+
 
         return (
             <div>
-                <div>
-                    <VideoPlayer video={this.state.currentVideo} />
-                </div>
-
-                <div>음식정보
-
-
-
-                    <button onClick={() => this.naverShare()}>네이버공유하기</button>
-
-
-                </div>
-
-
-
-                <button onClick={() => favoritPost(lastFoodname)} className="favoritBt">찜</button>
-
-                <div>
-                    <VideoList
-                        onVideoSelect={userSelected => this.setState({ currentVideo: userSelected })}
-                        videos={this.state.videos} />
-                </div>
+                <VideoPlayer video={this.state.currentVideo} />
+                <ContentsInfo dish={this.props.dish} foodNum={foodNum} />
+                <button onClick={() => favoritPost(lastFoodname)} className="favoritBt">찜하기</button>
+                <button onClick={() => this.naverShare()}>네이버공유하기</button>
+                <VideoList
+                    onVideoSelect={userSelected => this.setState({ currentVideo: userSelected })}
+                    videos={this.state.videos} />
             </div>
         );
     }
