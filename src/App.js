@@ -105,7 +105,7 @@ class App extends React.Component {
             />
             <Route exact path="/logout" render={() => <LogOut isLogin={isLogin} handleIsLogoutChange={this.handleIsLogoutChange.bind(this)} />} />
             <Route exact path="/admin"><Admin /></Route>
-            <Route exact path="/contents/:name"><Contents /></Route>
+            <Route exact path="/contents/:name"><Contents URIEncoding="UTF-8" /></Route>
             <Route exact path="/meatList"><MeatList dish={this.state.foods} isLogin={isLogin} /></Route>
             <Route exact path="/dessertList"><DessertList isLogin={isLogin} /></Route>
             <Route exact path="/seafoodList"><SeaList isLogin={isLogin} /></Route>
