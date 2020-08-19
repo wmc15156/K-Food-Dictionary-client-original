@@ -15,22 +15,20 @@ class DessertList extends React.Component {
     render() {
         var lists = [];
         const dessertFoodDish = this.props.dish;
-        const { favoritPost } = this.props;
 
         let i = 0;
         while (i < dessertFoodDish.length) {
             let url = `http://localhost:3000/contents/${dessertFoodDish[i].foodname}`;
             lists.push(
                 <div key={dessertFoodDish[i].id}>
-                    <a href={url}>
+                    <div href={url}>
                         <p>
                             <img src={dessertFoodDish[i].image} alt='foods'></img>
                         </p>
-                    </a>
+                    </div>
                     <span>
                         {dessertFoodDish[i].foodname}
                     </span>
-                    <button onClick={() => favoritPost(0)} className="favoritzBt" >찜</button>
                 </div>
             )
             i = i + 1;
