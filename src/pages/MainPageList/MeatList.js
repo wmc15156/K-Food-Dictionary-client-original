@@ -3,6 +3,12 @@ import PropTypes from 'prop-types';
 import { Link } from "react-router-dom";
 
 class MeatList extends React.Component {
+    constructor(props) {
+        super(props)
+
+        const { handleFoodsChange } = this.props;
+        handleFoodsChange('고기');
+    }
 
     render() {
         var lists = [];
@@ -13,10 +19,10 @@ class MeatList extends React.Component {
             let foodname = meatFoodDish[i].foodname
             let url = `contents/${foodname}`;
             lists.push(
-                <div>
-                    <Link to={url}>
+                <div key={meatFoodDish[i].id}>
+                    <Link to={url} onClick={(foodname) => this.fixedFoodname(foodname)}>
                         <p>
-                            <img src={meatFoodDish[i].url} ></img>
+                            <img src={meatFoodDish[i].image} alt="foods"></img>
                         </p>
                     </Link>
                     <span>

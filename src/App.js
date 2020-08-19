@@ -31,6 +31,16 @@ class App extends React.Component {
     };
   }
 
+  handleFoodsChange(kindOf) {
+    axios.get(`http://3.34.193.46:5000/product/sort/${kindOf}`)
+      .then(res => {
+        console.log(res.data.data)
+        this.setState({ foods: res.data.data });
+      });
+  }
+
+
+  //로그인시 상태,유저정보 업데이트
   handleIsLoginChange() {
     this.setState({ isLogin: true });
     const user = JSON.parse(localStorage.getItem('user'));
@@ -95,11 +105,11 @@ class App extends React.Component {
               render={() => <Mypage isLogin={isLogin} userinfo={userinfo} favoritGet={this.favoritGet.bind(this)} />}
             />
             <Route exact path="/logout" render={() => <LogOut isLogin={isLogin} handleIsLogoutChange={this.handleIsLogoutChange.bind(this)} />} />
-            <Route exact path="/admin" ><Admin isLogin={isLogin} /></Route>
-            <Route exact path="/meatList"><MeatList dish={this.state.foods} isLogin={isLogin} /></Route>
-            <Route exact path="/dessertList"><DessertList isLogin={isLogin} /></Route>
-            <Route exact path="/seafoodList"><SeaList isLogin={isLogin} /></Route>
-            <Route exact path="/contents/:name"><Contents favoritPost={this.favoritPost.bind(this)} dish={this.state.foods} isLogin={isLogin} /></Route>
+            <Route exact path="/admin"><Admin /></Route>
+            <Route exact path="/meatList"><MeatList dish={this.state.foods} isLogin={isLogin} handleFoodsChange={this.handleFoodsChange.bind(this)} /></Route>
+            <Route exact path="/dessertList"><DessertList isLogin={isLogin} dish={this.state.foods} handleFoodsChange={this.handleFoodsChange.bind(this)} /></Route>
+            <Route exact path="/seafoodList"><SeaList isLogin={isLogin} dish={this.state.foods} handleFoodsChange={this.handleFoodsChange.bind(this)} /></Route>
+            <Route exact path="/contents/:name"><Contents favoritPost={this.favoritPost.bind(this)} dish={this.state.foods} /></Route>
             <Route exact path="/"><Home /></Route>
             <Route><NotFound /></Route>
           </Switch>
