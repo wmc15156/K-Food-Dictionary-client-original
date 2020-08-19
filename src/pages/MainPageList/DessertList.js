@@ -1,5 +1,6 @@
 import React from "react";
 import PropTypes from 'prop-types';
+import { Link } from "react-router-dom";
 
 // 이 파일은 디저트 리스트를 보여주는 페이지입니다
 // 하단의 이미지 링크들을 클릭 시 곡물 카테고리로 이동합니다. 
@@ -18,14 +19,15 @@ class DessertList extends React.Component {
 
         let i = 0;
         while (i < dessertFoodDish.length) {
-            let url = `http://localhost:3000/contents/${dessertFoodDish[i].foodname}`;
+            let foodname = dessertFoodDish[i].foodname
+            let url = `contents/${foodname}`;
             lists.push(
                 <div key={dessertFoodDish[i].id}>
-                    <div href={url}>
+                    <Link to={url}>
                         <p>
                             <img src={dessertFoodDish[i].image} alt='foods'></img>
                         </p>
-                    </div>
+                    </Link>
                     <span>
                         {dessertFoodDish[i].foodname}
                     </span>

@@ -1,5 +1,6 @@
 import React from "react";
 import PropTypes from 'prop-types';
+import { Link } from "react-router-dom";
 
 // 이 파일은 해산물 리스트를 보여주는 페이지입니다
 // 하단의 이미지 링크들을 클릭시 해산물 카테고리로 이동합니다. 
@@ -17,14 +18,15 @@ class SeaList extends React.Component {
 
         let i = 0;
         while (i < seaFoodDish.length) {
-            let url = `http://localhost:3000/contents/${seaFoodDish[i].foodname}`;
+            let foodname = seaFoodDish[i].foodname
+            let url = `contents/${foodname}`;
             lists.push(
                 <div key={seaFoodDish[i].id}>
-                    <div href={url}>
+                    <Link to={url}>
                         <p>
                             <img src={seaFoodDish[i].image} alt='foods'></img>
                         </p>
-                    </div>
+                    </Link>
                     <span>
                         {seaFoodDish[i].foodname}
                     </span>

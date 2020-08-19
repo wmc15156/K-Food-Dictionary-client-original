@@ -24,10 +24,10 @@ class Mypage extends React.Component {
     render() {
         console.log('로그인 여부 :' + this.props.isLogin)
 
-        if (!this.props.isLogin) {
-            alert('로그인 후 이용 가능합니다.');
-            document.location.href = 'http://localhost:3000/login'
-        }
+        // if (!this.props.isLogin) {
+        //     alert('로그인 후 이용 가능합니다.');
+        //     document.location.href = 'http://localhost:3000/login'
+        // }
         return (
             <div>
                 <h1>Mypage</h1>
