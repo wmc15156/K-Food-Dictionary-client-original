@@ -39,8 +39,6 @@ class App extends React.Component {
       });
   }
 
-
-  //로그인시 상태,유저정보 업데이트
   handleIsLoginChange() {
     this.setState({ isLogin: true });
     const user = JSON.parse(localStorage.getItem('user'));
@@ -57,8 +55,7 @@ class App extends React.Component {
 
   favoritPost(foodname) {
     const user = JSON.parse(localStorage.getItem('user'));
-    axios.get(`http://3.34.193.46:5000/product/like/${foodname}`,
-      { headers: { authorization: user } })
+    axios.get(`http://3.34.193.46:5000/product/like/${foodname}`, { headers: { authorization: user } })
       .then(res => {
         console.log(res)
       })
@@ -70,7 +67,8 @@ class App extends React.Component {
   //그 음식을 클릭하면 그 url로 가게함
 
   favoritGet() {
-    axios.get('http://3.34.193.46:5000/product/sort/:productId/')
+    const user = JSON.parse(localStorage.getItem('user'));
+    axios.get('http://3.34.193.46:5000/product/sort/:productId/', { headers: { authorization: user } })
       .then(res => {
         console.log(res);
         let url = `http://localhost:3000/contents/${res.fooodname}`
