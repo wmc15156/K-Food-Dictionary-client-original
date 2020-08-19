@@ -50,6 +50,9 @@ class App extends React.Component {
         console.log(res)
         alert('로그아웃이 완료되었습니다')
       })
+  };
+  likeFood() {
+    console.log('클릭');
   }
 
   componentDidMount() {
@@ -57,9 +60,19 @@ class App extends React.Component {
     // 최초 업로드될때 유저정보를 불러와서 로그인상태여부 확인용도
     // 에러 나는부분
    console.log('로딩');
-   axios.get('http://localhost:5000/user/info')
+   const user = JSON.parse(localStorage.getItem('user'));
+   console.log(user,'if밖')
+   if(user) {
+     console.log('if')
+    axios.get('http://3.34.193.46:5000/user/info',{ headers: { authorization: user } })
+   .then((res) =>{
+     console.log('성공');
+     console.log(res.data);
+   })
+   }
   }
   render() {
+    
     const { isLogin, userinfo } = this.state;
     console.log(isLogin, userinfo, '로그인 여부와 유저 인포');
     return (

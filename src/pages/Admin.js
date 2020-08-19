@@ -111,6 +111,14 @@ const Admin = (props) => {
         }
       });
   }
+  const like = () => {
+    console.log('클릭');
+    const user = JSON.parse(localStorage.getItem('user'));
+    axios.get('http://3.34.193.46:5000/product/like/강아지', { headers: { authorization: user } })
+    .then((res) => {
+      console.log(res,'성송성공');
+    })
+  }
   console.log(props,'=====');
   return (
     <div>
@@ -152,11 +160,12 @@ const Admin = (props) => {
               <br />
               <br />
               <Button style={{ marginBottom: "50px"}}htmlType="submit" type="primary">완료</Button>
-
+              
             </Form>
           </div>
         </Col>
         <Col lg={8} xs={24}>
+        <button onClick={like}>버튼</button>
         </Col>
       </Row>
     </div>

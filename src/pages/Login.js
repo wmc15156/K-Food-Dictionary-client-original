@@ -42,9 +42,16 @@ class Login extends React.Component {
                                     password: password
                                 })
                                 .then((res) => {
+                                  if(res.data.success) {
+                                    //{success: true token: 'asdjansdjasndlaksdnaksdnlsadknadlknasd}
+                                    console.log('완료')
                                     handleIsLoginChange();
-                                    console.log(res.data);
+                                    console.log(res.data.token);
+                                    localStorage.setItem('user', JSON.stringify(res.data.token));
+                                    localStorage.getItem('user')
                                     this.props.history.push('/mypage');
+                                  }
+                                    
                                 })
                                 .catch(err => console.log(err));
                         }}
@@ -71,6 +78,9 @@ class Login extends React.Component {
 
                         <span className="fbLogin">
                             <Facebook />
+                        </span>
+                        < span>
+                          <a>버튼</a>
                         </span>
 
                     </form>
