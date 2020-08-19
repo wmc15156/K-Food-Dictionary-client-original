@@ -42,16 +42,9 @@ class Login extends React.Component {
                                     password: password
                                 })
                                 .then((res) => {
-                                  if(res.data.success) {
-                                    //{success: true token: 'asdjansdjasndlaksdnaksdnlsadknadlknasd}
-                                    console.log('완료')
+                                    localStorage.setItem('user',JSON.stringify(res.data.token));
                                     handleIsLoginChange();
-                                    console.log(res.data.token);
-                                    localStorage.setItem('user', JSON.stringify(res.data.token));
-                                    localStorage.getItem('user')
                                     this.props.history.push('/mypage');
-                                  }
-                                    
                                 })
                                 .catch(err => console.log(err));
                         }}

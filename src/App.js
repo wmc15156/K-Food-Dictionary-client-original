@@ -20,8 +20,9 @@ class App extends React.Component {
     super(props)
 
     this.state = {
-      isLogin: false,
+      isLogin: "",
       userinfo: {},
+      email:'',
       foods: [
         { id: 1, foodname: '삼겹살', sort: 'meat1', url: "https://bit.ly/2Cq602i" },
         { id: 2, foodname: '안심', sort: 'meat', url: "https://bit.ly/3iIVtPp" },
@@ -33,22 +34,26 @@ class App extends React.Component {
 
   //로그인시 상태,유저정보 업데이트
   handleIsLoginChange() {
+    const user = JSON.parse(localStorage.getItem('user'));
     this.setState({ isLogin: true });
-    axios.get('http://3.34.193.46:5000/user/info')
+    axios.get('http://3.34.193.46:5000/user/info',{ headers: { authorization: user }})
       .then(res => {
-        console.log(res);
-        console.log(res.data);
-        this.setState({ userinfo: res.data });
+        this.setState({ 
+          userinfo: res.data,
+          email: res.data.email
+        });
       });
   }
 
   //로그아웃 기능
   handleIsLogoutChange() {
     this.setState({ isLogin: false });
-    axios.post('http://3.34.193.46:5000/user/logout')
-      .then(res => {
-        console.log(res)
-      })
+    localStorage.clear();
+    // axios.post('http://3.34.193.46:5000/user/logout')
+    //   .then(res => {
+    //     console.log(res)
+    //     alert('로그아웃이 완료되었습니다')
+    //   })
   }
 
   //찜클릭시 서버로 post
@@ -85,16 +90,34 @@ class App extends React.Component {
     // 이부분은 테스트용도로 만들었습니다. -현진-
     // 최초 업로드될때 유저정보를 불러와서 로그인상태여부 확인용도
     // 에러 나는부분
-    console.log('로딩');
-    axios.get('http://localhost:5000/user/info')
+   console.log('로딩');
+   const user = JSON.parse(localStorage.getItem('user'));
+   if(user) {
+     this.setState({
+       isLogin: true
+     });
+    axios.get('http://3.34.193.46:5000/user/info', { headers: { authorization: user }})
+     .then((res) => {
+       console.log('res');
+       console.log(res);
+       this.setState({
+        email: res.data.email || res.data[0].email
+       });
+     })
+   } else {
+    this.setState({
+      isLogin: false
+    });
+   }
+   
   }
   render() {
-    
-    const { isLogin, userinfo } = this.state;
+    console.log(this.state.email,222222);
+    const { isLogin, userinfo, email } = this.state;
     console.log(isLogin, userinfo, '로그인 여부와 유저 인포');
     return (
       <BrowserRouter>
-        <OnboardNav isLogin={isLogin}></OnboardNav>
+        <OnboardNav isLogin={isLogin} email={email}></OnboardNav>
         <div className="mainPageBox">
           <Switch>
             <Route exact path="/login"

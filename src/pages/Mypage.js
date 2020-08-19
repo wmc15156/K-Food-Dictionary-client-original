@@ -22,18 +22,7 @@ class Mypage extends React.Component {
     }
 
     render() {
-        // if (!this.props.isLogin) {
-        //     alert('로그인 후 이용 가능합니다.');
-        //     document.location.href = 'http://localhost:3000/login'
-        // }
-        console.log('로그인 여부 :' + this.props.isLogin)
-
-        // function AdminPage(e) {
-        //     e.preventDefault();
-        //     window.location = 'http://localhost:3000/admin';
-        // }
-
-        if (!this.props.isLogin) {
+        if (this.props.isLogin === false) {
             alert('로그인 후 이용 가능합니다.');
             document.location.href = 'http://localhost:3000/login'
         }
