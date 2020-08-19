@@ -1,27 +1,33 @@
 import React from 'react';
 import PropTypes from 'prop-types';
+import { Link } from "react-router-dom";
 
 class MeatList extends React.Component {
+    constructor(props) {
+        super(props)
+
+        const { handleFoodsChange } = this.props;
+        handleFoodsChange('고기');
+    }
 
     render() {
         var lists = [];
         const meatFoodDish = this.props.dish;
-        const { favoritPost } = this.props;
 
         let i = 0;
         while (i < meatFoodDish.length) {
-            let url = `http://localhost:3000/contents/${meatFoodDish[i].foodname}`;
+            let foodname = meatFoodDish[i].foodname
+            let url = `contents/${foodname}`;
             lists.push(
-                <div>
-                    <a href={url}>
+                <div key={meatFoodDish[i].id}>
+                    <Link to={url}>
                         <p>
-                            <img src={meatFoodDish[i].url} alt='seafoods'></img>
+                            <img src={meatFoodDish[i].image} alt="foods"></img>
                         </p>
-                    </a>
+                    </Link>
                     <span>
-                        {meatFoodDish[i].foodname}
+                        {foodname}
                     </span>
-                    <button onClick={() => favoritPost(0)} className="favoritzBt" >찜</button>
                 </div>
             )
             i = i + 1;
@@ -38,5 +44,6 @@ class MeatList extends React.Component {
 MeatList.propTypes = {
     dish: PropTypes.array,
 };
+
 
 export default MeatList;

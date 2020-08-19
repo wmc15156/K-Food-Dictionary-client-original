@@ -5,12 +5,6 @@ import axios from "axios";
 
 axios.defaults.withCredentials = true;
 
-//-mypage 이동 시 해당 찜 리스트 서버에서 받아오는 방법
-//찜목록 받아올 수 있는 레이아웃만들기
-//음식 클릭시 data요청(음식 이름보냄)
-//서버에서 음식이름으로 data를 찾아서 해당 url가져옴
-//그 url로 이동
-
 class Mypage extends React.Component {
     constructor(props) {
         super(props);
@@ -26,16 +20,30 @@ class Mypage extends React.Component {
             alert('로그인 후 이용 가능합니다.');
             document.location.href = 'http://localhost:3000/login'
         }
+
+        const userinfo = this.props.userinfo;
+        var favoriteList = [];
+        for (let i = 1; i < userinfo.length; i++) {
+            let favorFN = userinfo[i].foodname;
+            let url = `http://localhost:3000/contents/${favorFN}`;
+            favoriteList.push(
+                <div className="favoriteFood">
+                    <a href={url}>
+                        <img src={userinfo[i].image} alt="foods"></img>
+                    </a>
+                    <span>
+                        {favorFN}
+                    </span>
+                </div>
+            )
+        }
         return (
             <div>
                 <h1>Mypage</h1>
-
-                {/* <div className="userInfo">유저 정보입니다</div> */}
                 <div className="favoriteFood">찜한 음식</div>
-
-                <span className="favoritFList">1</span>
-
-
+                <div className="favoritFList">
+                    {favoriteList}
+                </div>
             </div>
         )
     }

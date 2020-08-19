@@ -115,7 +115,6 @@ const Admin = (props) => {
           </div>
         </Col>
         <Col lg={8} xs={24}>
-        <button onClick={like}>버튼</button>
         </Col>
       </Row>
     </div>

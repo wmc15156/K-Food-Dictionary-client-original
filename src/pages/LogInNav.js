@@ -5,7 +5,7 @@ import img from "../images/logo.jpg";
 class LogInNav extends React.Component {
     render() {
       console.log(this.props.email,'logout');
-      const adminEmail = ['wmc15156@naver.com', 'wmc1415@naver.com', 'wmc1324@naver.com', 'wmc1234@naver.com'];
+      const adminEmail = ['wmc15156@naver.com', 'wmc1415@naver.com', 'samiosae@gmail.com','bbirds94@gmail.com','cocokiuuu1858@gmail.com'];
       const checkEmail = adminEmail.includes(this.props.email);
       console.log(checkEmail);
         return (

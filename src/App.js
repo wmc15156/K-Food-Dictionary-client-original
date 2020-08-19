@@ -32,58 +32,38 @@ class App extends React.Component {
     };
   }
 
-  //로그인시 상태,유저정보 업데이트
+  handleFoodsChange(kindOf) {
+    axios.get(`http://3.34.193.46:5000/product/sort/${kindOf}`)
+      .then(res => {
+        console.log(res.data.data)
+        this.setState({ foods: res.data.data });
+      });
+  }
+
   handleIsLoginChange() {
     const user = JSON.parse(localStorage.getItem('user'));
     this.setState({ isLogin: true });
     axios.get('http://3.34.193.46:5000/user/info',{ headers: { authorization: user }})
       .then(res => {
+        console.log(res.data, 'email')
         this.setState({ 
           userinfo: res.data,
-          email: res.data.email
+          email: res.data.email || res.data[0].email
         });
       });
   }
 
-  //로그아웃 기능
   handleIsLogoutChange() {
     this.setState({ isLogin: false });
-    localStorage.clear();
-    // axios.post('http://3.34.193.46:5000/user/logout')
-    //   .then(res => {
-    //     console.log(res)
-    //     alert('로그아웃이 완료되었습니다')
-    //   })
+    localStorage.clear()
   }
 
-  //찜클릭시 서버로 post
-  favoritPost(id) {
-    console.log(this.state.userinfo.email);
-    console.log(this.state.foods[0].foodname);
-
-    axios.post('http://localhost:5000/product/like/:productId', {
-      foodname: this.state.foods[0].foodname
-    })
+  favoritPost(foodname) {
+    const user = JSON.parse(localStorage.getItem('user'));
+    axios.get(`http://3.34.193.46:5000/product/like/${foodname}`, { headers: { authorization: user } })
       .then(res => {
         console.log(res)
       })
-  }
-
-  //마이페이지에 찜음식 랜더위한 get
-  //찜목록 음식데이터 가져옴
-  //음식이름으로 url만듬 (예 : http://localhost:3000/contents/삼겹살)
-  //그 음식을 클릭하면 그 url로 가게함
-
-  favoritGet() {
-    axios.get('http://localhost:5000/product/sort/:productId/')
-      .then(res => {
-        console.log(res);
-        let url = `http://localhost:3000/contents/${res.fooodname}`
-        // document.location.href = { url };
-      })
-  };
-  likeFood() {
-    console.log('클릭');
   }
 
   componentDidMount() {
@@ -111,6 +91,7 @@ class App extends React.Component {
    }
    
   }
+
   render() {
     console.log(this.state.email,222222);
     const { isLogin, userinfo, email } = this.state;
@@ -128,14 +109,14 @@ class App extends React.Component {
               render={() => <Signup isLogin={isLogin} />}
             />
             <Route exact path="/mypage"
-              render={() => <Mypage isLogin={isLogin} userinfo={userinfo} favoritGet={this.favoritGet.bind(this)} />}
+              render={() => <Mypage isLogin={isLogin} userinfo={userinfo} />}
             />
             <Route exact path="/logout" render={() => <LogOut isLogin={isLogin} handleIsLogoutChange={this.handleIsLogoutChange.bind(this)} />} />
             <Route exact path="/admin"><Admin /></Route>
-            <Route exact path="/contents/:name"><Contents /></Route>
-            <Route exact path="/meatList"><MeatList dish={this.state.foods} isLogin={isLogin} /></Route>
-            <Route exact path="/dessertList"><DessertList isLogin={isLogin} /></Route>
-            <Route exact path="/seafoodList"><SeaList isLogin={isLogin} /></Route>
+            <Route exact path="/meatList"><MeatList dish={this.state.foods} isLogin={isLogin} handleFoodsChange={this.handleFoodsChange.bind(this)} /></Route>
+            <Route exact path="/dessertList"><DessertList isLogin={isLogin} dish={this.state.foods} handleFoodsChange={this.handleFoodsChange.bind(this)} /></Route>
+            <Route exact path="/seafoodList"><SeaList isLogin={isLogin} dish={this.state.foods} handleFoodsChange={this.handleFoodsChange.bind(this)} /></Route>
+            <Route exact path="/contents/:name"><Contents favoritPost={this.favoritPost.bind(this)} dish={this.state.foods} /></Route>
             <Route exact path="/"><Home /></Route>
             <Route><NotFound /></Route>
           </Switch>
@@ -145,3 +126,4 @@ class App extends React.Component {
   }
 }
 export default App;
+
