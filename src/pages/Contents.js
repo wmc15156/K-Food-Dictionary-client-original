@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import YTSearch from 'youtube-api-search';
 import VideoList from './ContentsPage/video_list'
 import VideoPlayer from './ContentsPage/video-player';
-const API_KEY = "YOUR_API_KEY"
+const API_KEY = "/"
 // AIzaSyBZFaNsqW7G12MmCn6tMMljlg4DQMLpEyY
 
 class Contents extends Component {
@@ -28,6 +28,11 @@ class Contents extends Component {
 
     }
     render() {
+        const dish = this.props.dish;
+        const { favoritPost } = this.props;
+        console.log(dish)
+        console.log(dish[0].foodname) //삼겹살
+
         return (
             <div>
                 <div>
@@ -35,6 +40,7 @@ class Contents extends Component {
                 </div>
 
                 <div>음식정보</div>
+                <button onClick={() => favoritPost(dish[0].foodname)} className="favoritzBt">찜</button>
 
                 <div>
                     <VideoList

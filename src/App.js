@@ -31,7 +31,6 @@ class App extends React.Component {
     };
   }
 
-  //로그인시 상태,유저정보 업데이트
   handleIsLoginChange() {
     this.setState({ isLogin: true });
     const user = JSON.parse(localStorage.getItem('user'));
@@ -41,25 +40,20 @@ class App extends React.Component {
       });
   }
 
-  //로그아웃 기능
   handleIsLogoutChange() {
     this.setState({ isLogin: false });
     localStorage.clear()
   }
 
-  //찜클릭시 서버로 post
-  favoritPost(id) {
-
+  //찜클릭시 서버로 저장
+  favoritPost(foodname) {
     const user = JSON.parse(localStorage.getItem('user'));
-    console.log(this.state.userinfo.email);
-    console.log(this.state.foods[0].foodname);
 
-
-    axios.post('http://3.34.193.46:5000/product/like/:productId', {
-      foodname: this.state.foods[0].foodname
-    }, { authorization: user })
+    axios.get(`http://3.34.193.46:5000/product/like/${foodname}`,
+      { headers: { authorization: user } })
       .then(res => {
         console.log(res)
+        //버튼 찜표시로 바꾸기
       })
   }
 
@@ -104,10 +98,10 @@ class App extends React.Component {
             />
             <Route exact path="/logout" render={() => <LogOut isLogin={isLogin} handleIsLogoutChange={this.handleIsLogoutChange.bind(this)} />} />
             <Route exact path="/admin"><Admin /></Route>
-            <Route exact path="/contents/:name"><Contents /></Route>
             <Route exact path="/meatList"><MeatList dish={this.state.foods} isLogin={isLogin} /></Route>
             <Route exact path="/dessertList"><DessertList isLogin={isLogin} /></Route>
             <Route exact path="/seafoodList"><SeaList isLogin={isLogin} /></Route>
+            <Route exact path="/contents/:name"><Contents favoritPost={this.favoritPost.bind(this)} dish={this.state.foods} /></Route>
             <Route exact path="/"><Home /></Route>
             <Route><NotFound /></Route>
           </Switch>

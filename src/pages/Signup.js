@@ -59,14 +59,14 @@ class Signup extends React.Component {
                         onSubmit={e => {
                             e.preventDefault();
                             axios
-                                .post('http://localhost:5000/user/signup', this.state)
+                                .post('http://3.34.193.46:5000/user/signup', this.state)
                                 .then(res => {
                                     if (res.status === 409) {
                                         alert('계정이 이미 존재합니다')
                                         this.props.history.push('/')
                                     }
                                     else if (res.status === 200) {
-                                        alert('가입이 완료되었습니다^^')
+                                        alert('가 입이 완료되었습니다^^')
                                         this.props.history.push('/login')
                                     }
                                 })
