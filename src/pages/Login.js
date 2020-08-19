@@ -42,6 +42,7 @@ class Login extends React.Component {
                                     password: password
                                 })
                                 .then((res) => {
+                                    localStorage.setItem('user',JSON.stringify(res.data.token));
                                     handleIsLoginChange();
                                     console.log(res.data);
                                     this.props.history.push('/mypage');

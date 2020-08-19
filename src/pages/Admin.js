@@ -5,62 +5,19 @@ import FileUpload from './upload';
 import axios from 'axios';
 import { withRouter } from 'react-router-dom';
 
+import useInput from '../hooks/userInput';
+
 const desc = ['맵지않음', '약간매움', '적당히매움', '매움', '많이 매움'];
 // 이 페이지는 관리자 페이지입니다. 
 // 아직 기능 구현 전이라 임의의 입력 폼 레이아웃만 짜놨습니다.
 
-// class Admin extends React.Component {
-//     render() {
-//         return (
-//             <div>
-//                 <h1>Admin page</h1>
-//                 <center>
-//                     <div>
-//                         <input className="inputForm"
-//                             type="foodPicture"
-//                             placeholder="food picture">
-//                         </input>
-//                     </div>
-
-//                     <div>
-//                         <input className="inputForm"
-//                             type="foodName"
-//                             placeholder="food name">
-//                         </input>
-//                     </div>
-
-//                     <div>
-//                         <input className="inputForm"
-//                             type="foodInfo"
-//                             placeholder="food info">
-//                         </input>
-//                     </div>
-
-//                     <div>
-//                         <input className="inputForm"
-//                             type="tip"
-//                             placeholder="tip">
-//                         </input>
-//                     </div>
-
-//                     <div>
-//                         <input className="inputForm"
-//                             type="spicy"
-//                             placeholder="spicy">
-//                         </input>
-//                     </div>
-//                 </center>
-//             </div>
-//         )
-//     }
-// }
 
 const Admin = (props) => {
   const [Image, setImage] = useState([])
-  const [foodName, setFoodName] = useState('');
-  const [foodInfo, setFoodInfo] = useState('');
-  const [foodSort, setfoodSort] = useState('');
-  const [tip, setTip] = useState('');
+  const [foodName, onChangeName] = useInput('');
+  const [foodInfo, onChangeFoodInfo] = useInput('');
+  const [foodSort, onChangeFoodSort] = useInput('');
+  const [tip, onChangeTip] = useInput('');
   const [spicy, setSpicy] = useState(3);
   const [value, setValue] = useState(3);
 
@@ -70,30 +27,30 @@ const Admin = (props) => {
     console.log(Image)
     setImage(newImages);
   }
-  const onChangeName = (e) => {
-    // 인풋창에 글 입력시 업데이트
-    setFoodName(e.target.value);
-  };
+  // const onChangeName = (e) => {
+  //   // 인풋창에 글 입력시 업데이트
+  //   setFoodName(e.target.value);
+  // };
 
-  const onChangeFoodSort = (e) => {
-    // 인풋창에 글 입력시 업데이트
-    setfoodSort(e.target.value);
-  }
+  // const onChangeFoodSort = (e) => {
+  //   // 인풋창에 글 입력시 업데이트
+  //   setfoodSort(e.target.value);
+  // }
 
-  const onChangeFoodInfo = (e) => {
-    // 인풋창에 글 입력시 업데이트
-    setFoodInfo(e.target.value);
-  }
+  // const onChangeFoodInfo = (e) => {
+  //   // 인풋창에 글 입력시 업데이트
+  //   setFoodInfo(e.target.value);
+  // }
 
-  const onChangeTip = (e) => {
-    // 인풋창에 글 입력시 업데이트
-    setTip(e.target.value);
-  }
+  // const onChangeTip = (e) => {
+  //   // 인풋창에 글 입력시 업데이트
+  //   setTip(e.target.value);
+  // }
 
-  const onChangeSpicy = (e) => {
-    // 인풋창에 글 입력시 업데이트
-    setSpicy(e.target.value);
-  }
+  // const onChangeSpicy = (e) => {
+  //   // 인풋창에 글 입력시 업데이트
+  //   setSpicy(e.target.value);
+  // }
 
   const handleChange = (value) => {
     setSpicy(value);
@@ -146,7 +103,7 @@ const Admin = (props) => {
               <div>맵기정도</div>
               <span>
                 <Rate tooltips={desc} onChange={handleChange} value={spicy} />
-                {value ? <span className="ant-rate-text">{desc[value - 1]}</span> : ''}
+                {value ? <span className="ant-rate-text">{desc[spicy - 1]}</span> : ''}
                 </span>
               <br />
               <br />
