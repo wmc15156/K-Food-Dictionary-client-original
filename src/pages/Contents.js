@@ -3,6 +3,7 @@ import YTSearch from 'youtube-api-search';
 import VideoList from './ContentsPage/video_list'
 import VideoPlayer from './ContentsPage/video-player';
 const API_KEY = "YOUR_API_KEY"
+// AIzaSyBZFaNsqW7G12MmCn6tMMljlg4DQMLpEyY
 
 class Contents extends Component {
     constructor(props) {
