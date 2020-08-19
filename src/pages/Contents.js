@@ -2,8 +2,9 @@ import React, { Component } from 'react';
 import YTSearch from 'youtube-api-search';
 import VideoList from './ContentsPage/video_list'
 import VideoPlayer from './ContentsPage/video-player';
-const API_KEY = "AIzaSyDsBplF70B03q3MrF2tghZYnYt5IZcFgCI"
 
+const API_KEY = "AIzaSyDsBplF70B03q3MrF2tghZYnYt5IZcFgCI"
+const lastURL = window.location.href
 class Contents extends Component {
     constructor(props) {
 
@@ -13,8 +14,8 @@ class Contents extends Component {
             videos: [],
             currentVideo: null,
         };
-        let lastURL = window.location.href.split('/')
-        this.videoSearch(decodeURI(lastURL[4]));
+        let ArrayLastURL = window.location.href.split('/')
+        this.videoSearch(decodeURI(ArrayLastURL[4]) + "먹방");
     }
 
 
@@ -26,8 +27,15 @@ class Contents extends Component {
                 currentVideo: data[0]
             });
         });
-
     }
+
+    naverShare() {
+        var url = encodeURI(encodeURIComponent(window.location.href));
+        var title = encodeURI(lastURL[4]);
+        var shareURL = "https://share.naver.com/web/shareView.nhn?url=" + url + "&title=" + title;
+        document.location = shareURL;
+    }
+
     render() {
         console.log("로그인여부 :", this.props.isLogin)
 
@@ -42,7 +50,17 @@ class Contents extends Component {
                     <VideoPlayer video={this.state.currentVideo} />
                 </div>
 
-                <div>음식정보</div>
+                <div>음식정보
+
+
+
+                    <button onClick={() => this.naverShare()}>네이버공유하기</button>
+
+
+                </div>
+
+
+
                 <button onClick={() => favoritPost(lastFoodname)} className="favoritBt">찜</button>
 
                 <div>
