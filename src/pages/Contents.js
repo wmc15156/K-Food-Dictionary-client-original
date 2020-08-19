@@ -6,19 +6,21 @@ const API_KEY = "YOUR_API_KEY"
 
 class Contents extends Component {
     constructor(props) {
+
         super(props);
 
         this.state = {
             videos: [],
-            currentVideo: null
+            currentVideo: null,
         };
-
-        this.videoSearch('먹방');
+        let lastURL = window.location.href.split('/')
+        this.videoSearch(decodeURI(lastURL[4]));
     }
+
 
     videoSearch(searchTerm) {
         YTSearch({ key: API_KEY, term: searchTerm }, (data) => {
-            console.log(data);
+
             this.setState({
                 videos: data,
                 currentVideo: data[0]

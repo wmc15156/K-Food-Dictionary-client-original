@@ -1,5 +1,6 @@
 import React from 'react';
 import PropTypes from 'prop-types';
+import { Link } from 'react-router-dom';
 
 class MeatList extends React.Component {
 
@@ -10,14 +11,14 @@ class MeatList extends React.Component {
 
         let i = 0;
         while (i < meatFoodDish.length) {
-            let url = `http://localhost:3000/contents/${meatFoodDish[i].foodname}`;
+            let url = `contents/${meatFoodDish[i].foodname}`;
             lists.push(
                 <div>
-                    <a href={url}>
+                    <Link to={url}>
                         <p>
-                            <img src={meatFoodDish[i].url} alt='seafoods'></img>
+                            <img src={meatFoodDish[i].url} ></img>
                         </p>
-                    </a>
+                    </Link>
                     <span>
                         {meatFoodDish[i].foodname}
                     </span>
