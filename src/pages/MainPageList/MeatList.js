@@ -2,6 +2,12 @@ import React from 'react';
 import PropTypes from 'prop-types';
 
 class MeatList extends React.Component {
+    constructor(props) {
+        super(props)
+
+        const { handleFoodsChange } = this.props;
+        handleFoodsChange('고기');
+    }
 
     render() {
         var lists = [];
@@ -12,10 +18,10 @@ class MeatList extends React.Component {
         while (i < meatFoodDish.length) {
             let url = `http://localhost:3000/contents/${meatFoodDish[i].foodname}`;
             lists.push(
-                <div>
+                <div key={meatFoodDish[i].id}>
                     <a href={url}>
                         <p>
-                            <img src={meatFoodDish[i].url} alt='seafoods'></img>
+                            <img src={meatFoodDish[i].image} alt='foods'></img>
                         </p>
                     </a>
                     <span>
