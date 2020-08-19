@@ -7,19 +7,21 @@ const API_KEY = "/"
 
 class Contents extends Component {
     constructor(props) {
+
         super(props);
 
         this.state = {
             videos: [],
-            currentVideo: null
+            currentVideo: null,
         };
-
-        this.videoSearch('먹방');
+        let lastURL = window.location.href.split('/')
+        this.videoSearch(decodeURI(lastURL[4]));
     }
+
 
     videoSearch(searchTerm) {
         YTSearch({ key: API_KEY, term: searchTerm }, (data) => {
-            console.log(data);
+
             this.setState({
                 videos: data,
                 currentVideo: data[0]
@@ -31,7 +33,7 @@ class Contents extends Component {
         const dish = this.props.dish;
         const { favoritPost } = this.props;
         console.log(dish)
-        console.log(dish[0].foodname) //삼겹살
+        // console.log(dish[0].foodname) //삼겹살
 
         return (
             <div>

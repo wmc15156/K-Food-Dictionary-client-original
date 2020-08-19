@@ -1,7 +1,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import { Link } from "react-router-dom";
-import Contents from '../Contents';
+// import Contents from '../Contents';
 
 class MeatList extends React.Component {
 
@@ -23,7 +23,7 @@ class MeatList extends React.Component {
                 <div>
                     <Link to={url} onClick={(foodname) => this.fixedFoodname(foodname)}>
                         <p>
-                            <img src={meatFoodDish[i].url} alt='seafoods'></img>
+                            <img src={meatFoodDish[i].url} ></img>
                         </p>
                     </Link>
                     <span>
@@ -37,7 +37,7 @@ class MeatList extends React.Component {
         return (
             <div>
                 <div>
-                    <Contents />
+                    {/* <Contents /> */}
                 </div>
                 <div>
                     <h2 >육류 페이지입니다.</h2>
