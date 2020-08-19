@@ -6,54 +6,6 @@ import axios from 'axios';
 import { withRouter } from 'react-router-dom';
 
 const desc = ['맵지않음', '약간매움', '적당히매움', '매움', '많이 매움'];
-// 이 페이지는 관리자 페이지입니다. 
-// 아직 기능 구현 전이라 임의의 입력 폼 레이아웃만 짜놨습니다.
-
-// class Admin extends React.Component {
-//     render() {
-//         return (
-//             <div>
-//                 <h1>Admin page</h1>
-//                 <center>
-//                     <div>
-//                         <input className="inputForm"
-//                             type="foodPicture"
-//                             placeholder="food picture">
-//                         </input>
-//                     </div>
-
-//                     <div>
-//                         <input className="inputForm"
-//                             type="foodName"
-//                             placeholder="food name">
-//                         </input>
-//                     </div>
-
-//                     <div>
-//                         <input className="inputForm"
-//                             type="foodInfo"
-//                             placeholder="food info">
-//                         </input>
-//                     </div>
-
-//                     <div>
-//                         <input className="inputForm"
-//                             type="tip"
-//                             placeholder="tip">
-//                         </input>
-//                     </div>
-
-//                     <div>
-//                         <input className="inputForm"
-//                             type="spicy"
-//                             placeholder="spicy">
-//                         </input>
-//                     </div>
-//                 </center>
-//             </div>
-//         )
-//     }
-// }
 
 const Admin = (props) => {
   const [Image, setImage] = useState([])
@@ -62,7 +14,8 @@ const Admin = (props) => {
   const [foodSort, setfoodSort] = useState('');
   const [tip, setTip] = useState('');
   const [spicy, setSpicy] = useState(3);
-  const [value, setValue] = useState(3);
+  const [value] = useState(3);
+  // const [setValue] = useState(3);
 
   const updateImages = (newImages) => {
     // 자식컴포넌트 값 부모 컴포넌트로 끌어올리기(lift-up)
@@ -90,10 +43,10 @@ const Admin = (props) => {
     setTip(e.target.value);
   }
 
-  const onChangeSpicy = (e) => {
-    // 인풋창에 글 입력시 업데이트
-    setSpicy(e.target.value);
-  }
+  // const onChangeSpicy = (e) => {
+  //   // 인풋창에 글 입력시 업데이트
+  //   setSpicy(e.target.value);
+  // }
 
   const handleChange = (value) => {
     setSpicy(value);
@@ -104,14 +57,14 @@ const Admin = (props) => {
     const foodData = { foodName: foodName, foodInfo: foodInfo, tip: tip, spicy: spicy, sort: foodSort, image: Image };
     axios.post('http://3.34.193.46:5000/product/upload', foodData)
       .then((res) => {
-        if(res.data.success) {
+        if (res.data.success) {
           props.history.push('/');
         } else {
           alert('무언가 문제가 있습니다.')
         }
       });
   }
-  console.log(props,'=====');
+  console.log(props, '=====');
   return (
     <div>
       <Row gutter={24}>
@@ -119,9 +72,9 @@ const Admin = (props) => {
         </Col>
         <Col lg={10} xs={24}>
           <div >
-            <div style={{ position: "relative" , right: "100px" }}>음식 정보 업로드</div>
+            <div style={{ position: "relative", right: "100px" }}>음식 정보 업로드</div>
             <br />
-  
+
             <Form onFinish={onSubmitForm}>
               {/* 자식컴포넌트 */}
               <FileUpload updateImages={updateImages} />
@@ -147,11 +100,11 @@ const Admin = (props) => {
               <span>
                 <Rate tooltips={desc} onChange={handleChange} value={spicy} />
                 {value ? <span className="ant-rate-text">{desc[value - 1]}</span> : ''}
-                </span>
+              </span>
               <br />
               <br />
               <br />
-              <Button style={{ marginBottom: "50px"}}htmlType="submit" type="primary">완료</Button>
+              <Button style={{ marginBottom: "50px" }} htmlType="submit" type="primary">완료</Button>
 
             </Form>
           </div>

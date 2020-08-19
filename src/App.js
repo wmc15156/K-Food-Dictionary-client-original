@@ -9,13 +9,11 @@ import Admin from "./pages/Admin"
 import Contents from "./pages/Contents"
 import Home from "./pages/Home"
 import SeaList from "./pages/MainPageList/SeaList"
-import MeatList from "./pages//MainPageList/MeatList"
-import DessertList from "./pages//MainPageList/DessertList"
+import MeatList from "./pages/MainPageList/MeatList"
+import DessertList from "./pages/MainPageList/DessertList"
 import OnboardNav from "./pages/OnboardNav";
 import NotFound from "./pages/NotFound";
 import LogOut from "./pages/LogOut";
-
-// 로그인 시에만 admin 페이지로 갈 수 있는 조건이 필요합니다.
 
 class App extends React.Component {
   constructor(props) {
@@ -33,22 +31,50 @@ class App extends React.Component {
     };
   }
 
-
+  //로그인시 상태,유저정보 업데이트
   handleIsLoginChange() {
     this.setState({ isLogin: true });
     axios.get('http://3.34.193.46:5000/user/info')
       .then(res => {
+        console.log(res);
         console.log(res.data);
         this.setState({ userinfo: res.data });
       });
   }
 
+  //로그아웃 기능
   handleIsLogoutChange() {
     this.setState({ isLogin: false });
     axios.post('http://3.34.193.46:5000/user/logout')
       .then(res => {
         console.log(res)
-        alert('로그아웃이 완료되었습니다')
+      })
+  }
+
+  //찜클릭시 서버로 post
+  favoritPost(id) {
+    console.log(this.state.userinfo.email);
+    console.log(this.state.foods[0].foodname);
+
+    axios.post('http://localhost:5000/product/like/:productId', {
+      foodname: this.state.foods[0].foodname
+    })
+      .then(res => {
+        console.log(res)
+      })
+  }
+
+  //마이페이지에 찜음식 랜더위한 get
+  //찜목록 음식데이터 가져옴
+  //음식이름으로 url만듬 (예 : http://localhost:3000/contents/삼겹살)
+  //그 음식을 클릭하면 그 url로 가게함
+
+  favoritGet() {
+    axios.get('http://localhost:5000/product/sort/:productId/')
+      .then(res => {
+        console.log(res);
+        let url = `http://localhost:3000/contents/${res.fooodname}`
+        // document.location.href = { url };
       })
   }
 
@@ -56,8 +82,8 @@ class App extends React.Component {
     // 이부분은 테스트용도로 만들었습니다. -현진-
     // 최초 업로드될때 유저정보를 불러와서 로그인상태여부 확인용도
     // 에러 나는부분
-   console.log('로딩');
-   axios.get('http://localhost:5000/user/info')
+    console.log('로딩');
+    axios.get('http://localhost:5000/user/info')
   }
   render() {
     const { isLogin, userinfo } = this.state;
@@ -75,14 +101,14 @@ class App extends React.Component {
               render={() => <Signup isLogin={isLogin} />}
             />
             <Route exact path="/mypage"
-              render={() => <Mypage isLogin={isLogin} userinfo={userinfo} />}
+              render={() => <Mypage isLogin={isLogin} userinfo={userinfo} favoritGet={this.favoritGet.bind(this)} />}
             />
-            <Route exact path="/logout" render={() => <LogOut isLogin={isLogin} />} />
+            <Route exact path="/logout" render={() => <LogOut isLogin={isLogin} handleIsLogoutChange={this.handleIsLogoutChange.bind(this)} />} />
             <Route exact path="/admin"><Admin /></Route>
-            <Route exact path="/contents"><Contents /></Route>
-            <Route exact path="/dessertList"><DessertList /></Route>
-            <Route exact path="/meatList"><MeatList dish={this.state.foods} /></Route>
-            <Route exact path="/seafoodList"><SeaList /></Route>
+            <Route exact path="/contents/:name"><Contents /></Route>
+            <Route exact path="/meatList"><MeatList dish={this.state.foods} isLogin={isLogin} /></Route>
+            <Route exact path="/dessertList"><DessertList isLogin={isLogin} /></Route>
+            <Route exact path="/seafoodList"><SeaList isLogin={isLogin} /></Route>
             <Route exact path="/"><Home /></Route>
             <Route><NotFound /></Route>
           </Switch>
