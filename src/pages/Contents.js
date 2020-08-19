@@ -3,7 +3,6 @@ import YTSearch from 'youtube-api-search';
 import VideoList from './ContentsPage/video_list'
 import VideoPlayer from './ContentsPage/video-player';
 const API_KEY = "/"
-// AIzaSyBZFaNsqW7G12MmCn6tMMljlg4DQMLpEyY
 
 class Contents extends Component {
     constructor(props) {
@@ -30,10 +29,13 @@ class Contents extends Component {
 
     }
     render() {
-        const dish = this.props.dish;
+        console.log("로그인여부 :", this.props.isLogin)
+
         const { favoritPost } = this.props;
-        console.log(dish)
-        // console.log(dish[0].foodname) //삼겹살
+
+        let lasturl = window.location.href.split('/')
+        let lastFoodname = decodeURI(lasturl[4])
+        console.log('음식이름', lastFoodname);
 
         return (
             <div>
@@ -42,7 +44,7 @@ class Contents extends Component {
                 </div>
 
                 <div>음식정보</div>
-                <button onClick={() => favoritPost(dish[0].foodname)} className="favoritzBt">찜</button>
+                <button onClick={() => favoritPost(lastFoodname)} className="favoritBt">찜</button>
 
                 <div>
                     <VideoList

@@ -55,15 +55,12 @@ class App extends React.Component {
     localStorage.clear()
   }
 
-  //찜클릭시 서버로 저장
   favoritPost(foodname) {
     const user = JSON.parse(localStorage.getItem('user'));
-
     axios.get(`http://3.34.193.46:5000/product/like/${foodname}`,
       { headers: { authorization: user } })
       .then(res => {
         console.log(res)
-        //버튼 찜표시로 바꾸기
       })
   }
 
@@ -88,6 +85,7 @@ class App extends React.Component {
     console.log('로딩');
     axios.get('http://localhost:5000/user/info')
   }
+
   render() {
     const { isLogin, userinfo } = this.state;
     console.log(isLogin, userinfo, '로그인 여부와 유저 인포');
