@@ -112,27 +112,31 @@
 .video-list {
   height: 100%;
   width: 100%;
-  padding: 5px;
+  padding: 20px;
   overflow-x: auto;
-}
-
-.video-list-entry {
-  font-size: 30px;
   border-style:solid;
 }
 
-.video-list-entry-title {
+.video-list-item {
+  border-style:solid;
+  width:100%;
+  height:200px;
+}
+
+.video-list-item-title {
+padding-top: 50px;
   font-weight: bolder;
   font-size: 20px;
 }
 
-.video-list-entry-title:hover {
+.video-list-item-title:hover {
   color: #f711115d;
   cursor: pointer;
 }
 
 .thumbnails {
   float:left;
-  width:10%;
-  height:30%;
+  width:30%;
+  height:100%;
 }
+
