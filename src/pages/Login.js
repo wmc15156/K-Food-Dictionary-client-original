@@ -44,7 +44,6 @@ class Login extends React.Component {
                                 .then((res) => {
                                     localStorage.setItem('user', JSON.stringify(res.data.token));
                                     handleIsLoginChange();
-                                    console.log(res.data);
                                     this.props.history.push('/mypage');
                                 })
                                 .catch(err => console.log(err));

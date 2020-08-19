@@ -2,9 +2,6 @@ import React from "react";
 import PropTypes from 'prop-types';
 import { Link } from "react-router-dom";
 
-// 이 파일은 디저트 리스트를 보여주는 페이지입니다
-// 하단의 이미지 링크들을 클릭 시 곡물 카테고리로 이동합니다. 
-
 class DessertList extends React.Component {
     constructor(props) {
         super(props)

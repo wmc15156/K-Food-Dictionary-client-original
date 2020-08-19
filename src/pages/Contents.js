@@ -35,7 +35,6 @@ class Contents extends Component {
 
         let lasturl = window.location.href.split('/')
         let lastFoodname = decodeURI(lasturl[4])
-        console.log('음식이름', lastFoodname);
 
         return (
             <div>
