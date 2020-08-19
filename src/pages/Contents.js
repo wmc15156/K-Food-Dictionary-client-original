@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import YTSearch from 'youtube-api-search';
 import VideoList from './ContentsPage/video_list'
 import VideoPlayer from './ContentsPage/video-player';
-const API_KEY = "/"
+const API_KEY = "AIzaSyDsBplF70B03q3MrF2tghZYnYt5IZcFgCI"
 
 class Contents extends Component {
     constructor(props) {

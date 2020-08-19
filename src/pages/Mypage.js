@@ -16,9 +16,7 @@ class Mypage extends React.Component {
     }
 
     render() {
-        console.log('로그인 여부 :' + this.props.isLogin)
-
-        if (!this.props.isLogin) {
+        if (this.props.isLogin === false) {
             alert('로그인 후 이용 가능합니다.');
             document.location.href = 'http://localhost:3000/login'
         }
@@ -39,17 +37,13 @@ class Mypage extends React.Component {
                 </div>
             )
         }
-
         return (
             <div>
                 <h1>Mypage</h1>
-
                 <div className="favoriteFood">찜한 음식</div>
                 <div className="favoritFList">
                     {favoriteList}
                 </div>
-
-
             </div>
         )
     }
