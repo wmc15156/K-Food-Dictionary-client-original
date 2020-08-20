@@ -34,6 +34,7 @@ class App extends React.Component {
     };
   }
 
+
   handleFoodsChange(kindOf) {
     axios.get(`http://3.34.193.46:5000/product/sort/${kindOf}`)
       .then(res => {
@@ -72,6 +73,7 @@ class App extends React.Component {
             });
           });
       })
+    alert('찜 완료!')
   }
 
   componentDidMount() {

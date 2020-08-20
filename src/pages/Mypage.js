@@ -82,7 +82,7 @@ class Mypage extends React.Component {
     let data = [];
     for (let i = 1; i < userinfo.length; i++) {
       let favorFN = userinfo[i].foodname;
-      let url = `http://localhost:3000/contents/${favorFN}:${i - 1}`;
+      let url = `http://localhost:3000/contents/${favorFN}`;
       let obj = {};
       obj.key = i;
       obj.name = userinfo.username || userinfo[0].username
