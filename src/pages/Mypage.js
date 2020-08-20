@@ -36,13 +36,14 @@ class Mypage extends React.Component {
                     </span>
                 </div>
             )
+            console.log()
         }
         return (
             <div>
                 <h1>Mypage</h1>
                 <div className="favoriteFood">찜한 음식</div>
                 <div className="favoritFList">
-                    {favoriteList}
+                    {favoriteList} 
                 </div>
             </div>
         )
