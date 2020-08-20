@@ -37,7 +37,6 @@ class App extends React.Component {
   handleFoodsChange(kindOf) {
     axios.get(`http://3.34.193.46:5000/product/sort/${kindOf}`)
       .then(res => {
-        console.log(res.data.data)
         this.setState({ foods: res.data.data });
       });
   }
@@ -94,6 +93,13 @@ class App extends React.Component {
       });
       axios.get('http://3.34.193.46:5000/user/info', { headers: { authorization: user } })
         .then((res) => {
+          // 새로고침시 userInfo 정보 업데이트
+          console.log(res.data, 'res');
+          if(res.data.length > 1) {
+            this.setState({
+              userinfo: res.data,
+            });
+          }
           this.setState({
             email: res.data.email || res.data[0].email
           });
@@ -106,9 +112,7 @@ class App extends React.Component {
   }
 
   render() {
-    console.log(this.state.email, 222222);
     const { isLogin, userinfo, email } = this.state;
-    console.log(isLogin, userinfo, '로그인 여부와 유저 인포');
     return (
       <BrowserRouter>
         <OnboardNav isLogin={isLogin} email={email}></OnboardNav>
