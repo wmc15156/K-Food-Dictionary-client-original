@@ -10,7 +10,7 @@
     
 } */
 .mainPageBox {
-    background-color: rgb(63, 243, 18);
+    background-color: rgb(255, 255, 255);
     height: 100%;
     width: 100%;
     margin: 100px auto;
@@ -19,6 +19,12 @@
 }
 .NavBar {
     height: 100%;
+}
+
+.foodList {
+    height: 450px;
+    width: 450px;
+    border-radius: 70%;
 }
 
 #mainPageImage {

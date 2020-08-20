@@ -19,14 +19,14 @@ class SeaList extends React.Component {
             let url = `contents/${foodname}`;
             lists.push(
                 <div key={seaFoodDish[i].id}>
-                    <Link to={url}>
-                        <p>
-                            <img src={seaFoodDish[i].image} alt='foods'></img>
-                        </p>
-                    </Link>
                     <span>
                         {seaFoodDish[i].foodname}
                     </span>
+                    <Link to={url}>
+                        <p>
+                            <img src={seaFoodDish[i].image} alt='foods' className="foodList"></img>
+                        </p>
+                    </Link>
                 </div>
             )
             i = i + 1;
@@ -34,7 +34,7 @@ class SeaList extends React.Component {
 
         return (
             <div>
-                <h2 >해산물 페이지입니다.</h2>
+                <h2>맛과 영양이 풍부한 해산물 요리!</h2>
                 {lists}
             </div>
         )
