@@ -66,16 +66,15 @@ class Login extends React.Component {
             </div>
             <button className="button" type="submit">
               Login
-                        </button>
+            </button>
 
             <span className="fbLogin">
               <Facebook />
             </span>
-            < span>
-              <a>버튼</a>
-            </span>
 
           </form>
+          {/* 밑의 구글로그인 부분은 a태그로 무조건 감싸져야 합니다. -현진- */}
+          <a href="http://3.34.193.46.xip.io:5000/auth/google"> 구글로그인 </a>
         </center>
       </div>
     );
