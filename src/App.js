@@ -73,6 +73,7 @@ class App extends React.Component {
             });
           });
       })
+    alert('찜 완료!')
   }
 
   componentDidMount() {
