@@ -14,8 +14,8 @@ class Contents extends Component {
             videos: [],
             currentVideo: null,
         };
-        let ArrayLastURL = window.location.href.split('/')
-        this.videoSearch(decodeURI(ArrayLastURL[4]) + "먹방");
+        let lastURL = window.location.href.split('/')
+        this.videoSearch(decodeURI(lastURL[4]) + "먹방");
     }
 
 
@@ -52,7 +52,7 @@ class Contents extends Component {
             <div>
                 <VideoPlayer video={this.state.currentVideo} />
                 <ContentsInfo dish={this.props.dish} foodNum={foodNum} />
-                <button onClick={() => favoritPost(lastFoodname)} className="favoritBt">찜하기</button>
+                <button onClick={() => favoritPost(lastFoodname[0])} className="favoritBt">찜하기</button>
                 <button onClick={() => this.naverShare()}>네이버공유하기</button>
                 <VideoList
                     onVideoSelect={userSelected => this.setState({ currentVideo: userSelected })}

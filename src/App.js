@@ -1,6 +1,6 @@
 /* eslint-disable no-unused-vars */
 import React from 'react';
-import { Switch, Route, useHistory, Redirect, Router, BrowserRouter,withRouter } from 'react-router-dom';
+import { Switch, Route, useHistory, Redirect, Router, BrowserRouter, withRouter } from 'react-router-dom';
 
 import Login from './pages/Login';
 import Signup from './pages//Signup';
@@ -45,9 +45,9 @@ class App extends React.Component {
   handleIsLoginChange() {
     const user = JSON.parse(localStorage.getItem('user'));
     this.setState({ isLogin: true });
-    axios.get('http://3.34.193.46:5000/user/info', { headers: { authorization: user } })
+    axios.get('http://3.34.193.46:5000/user/info',
+      { headers: { authorization: user } })
       .then(res => {
-        console.log(res.data, 'email')
         this.setState({
           userinfo: res.data,
           email: res.data.email || res.data[0].email
@@ -60,11 +60,18 @@ class App extends React.Component {
     localStorage.clear()
   }
 
+  //찜이 되었을때, 원래 찜된목록일때 표시해야함
   favoritPost(foodname) {
     const user = JSON.parse(localStorage.getItem('user'));
     axios.get(`http://3.34.193.46:5000/product/like/${foodname}`, { headers: { authorization: user } })
-      .then(res => {
-        console.log(res)
+      .then(() => {
+        axios.get('http://3.34.193.46:5000/user/info',
+          { headers: { authorization: user } })
+          .then(res => {
+            this.setState({
+              userinfo: res.data,
+            });
+          });
       })
   }
 
@@ -73,29 +80,29 @@ class App extends React.Component {
     // 최초 업로드될때 유저정보를 불러와서 로그인상태여부 확인용도
     // 에러 나는부분
 
-  console.log('로딩');
-   let googleurl = window.location.href.split('=')
-   if(googleurl[1]) {
-     googleurl = googleurl[1].slice(0, googleurl[1].length-1);
-     localStorage.setItem('user',JSON.stringify(googleurl));
-     this.props.history.push('/');
-   }
-   const user = JSON.parse(localStorage.getItem('user'));
-   if(user) {
-     this.setState({
-       isLogin: true
-     });
-    axios.get('http://3.34.193.46:5000/user/info', { headers: { authorization: user }})
-     .then((res) => {
-       this.setState({
-        email: res.data.email || res.data[0].email
-       });
-     })
-   } else {
-    this.setState({
-      isLogin: false
-    });
-   }
+    console.log('로딩');
+    let googleurl = window.location.href.split('=')
+    if (googleurl[1]) {
+      googleurl = googleurl[1].slice(0, googleurl[1].length - 1);
+      localStorage.setItem('user', JSON.stringify(googleurl));
+      this.props.history.push('/');
+    }
+    const user = JSON.parse(localStorage.getItem('user'));
+    if (user) {
+      this.setState({
+        isLogin: true
+      });
+      axios.get('http://3.34.193.46:5000/user/info', { headers: { authorization: user } })
+        .then((res) => {
+          this.setState({
+            email: res.data.email || res.data[0].email
+          });
+        })
+    } else {
+      this.setState({
+        isLogin: false
+      });
+    }
   }
 
   render() {
