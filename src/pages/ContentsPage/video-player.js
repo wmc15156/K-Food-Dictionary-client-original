@@ -11,8 +11,8 @@ const VideoDetail = (props) => {
     const url = `https://www.youtube.com/embed/${videoId}`;
 
     return (
-        <div className="video-detail col-md-8">
-            <iframe title="먹방영상" className="video-player" src={url}></iframe>
+        <div className="video-player-box">
+            <iframe title="먹방영상" className="video-player" src={url} allowFullScreen></iframe>
         </div>
     );
 };

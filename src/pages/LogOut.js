@@ -17,5 +17,4 @@ class LogOut extends React.Component {
         );
     }
 }
-
 export default withRouter(LogOut);
