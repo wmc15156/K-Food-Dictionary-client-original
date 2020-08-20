@@ -12,7 +12,7 @@ const VideoDetail = (props) => {
 
     return (
         <div className="video-detail col-md-8">
-            <iframe className="video-player" src={url}></iframe>
+            <iframe title="먹방영상" className="video-player" src={url}></iframe>
         </div>
     );
 };
