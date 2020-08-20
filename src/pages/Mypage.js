@@ -25,7 +25,7 @@ class Mypage extends React.Component {
         var favoriteList = [];
         for (let i = 1; i < userinfo.length; i++) {
             let favorFN = userinfo[i].foodname;
-            let url = `http://localhost:3000/contents/${favorFN}:${i - 1}`;
+            let url = `http://localhost:3000/contents/${favorFN}`;
             favoriteList.push(
                 <div className="favoriteFood">
                     <a href={url}>

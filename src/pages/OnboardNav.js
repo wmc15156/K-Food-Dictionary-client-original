@@ -9,7 +9,6 @@ class OnboardNav extends React.Component {
         this.isLogin = this.props.isLogin;
     }
     render() {
-
         return (<div className="NavBar">
             {this.props.isLogin ? (
                 <LogInNav email={this.props.email}></LogInNav>

@@ -17,7 +17,7 @@ class MeatList extends React.Component {
         let i = 0;
         while (i < meatFoodDish.length) {
             let foodname = meatFoodDish[i].foodname
-            let url = `contents/${foodname}:${i}`;
+            let url = `contents/${foodname}`;
             lists.push(
                 <div key={meatFoodDish[i].id}>
                     <Link to={url}>
