@@ -2,7 +2,8 @@ import React, { Component } from 'react';
 import YTSearch from 'youtube-api-search';
 import VideoList from './ContentsPage/video_list'
 import VideoPlayer from './ContentsPage/video-player';
-const API_KEY = "AIzaSyDsBplF70B03q3MrF2tghZYnYt5IZcFgCI"
+const API_KEY = "/"
+
 
 class Contents extends Component {
     constructor(props) {
@@ -14,7 +15,7 @@ class Contents extends Component {
             currentVideo: null,
         };
         let lastURL = window.location.href.split('/')
-        this.videoSearch(decodeURI(lastURL[4]));
+        this.videoSearch(decodeURI(lastURL[4]) + "먹방");
     }
 
 
@@ -28,6 +29,7 @@ class Contents extends Component {
         });
 
     }
+
     render() {
         console.log("로그인여부 :", this.props.isLogin)
 
