@@ -13,7 +13,7 @@ class LogOutNav extends React.Component {
             <div>
                 <div className="NavBar">
                     <Link to="/login" className="link" >Login</Link>
-                    <Link to="/signup" className="link">Singup</Link>
+                    <Link to="/signup" className="link">Signup</Link>
                     <Link to="/" className="homelink">
                         <img className="mainPageLogo" src={img} alt="logo"></img>
                     </Link>
