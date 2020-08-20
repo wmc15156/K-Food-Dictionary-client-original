@@ -4,6 +4,7 @@ import React from "react";
 import { withRouter, Link, useHistory } from "react-router-dom";
 import axios from "axios";
 
+//3.34.193.46:5000
 axios.defaults.withCredentials = true;
 class Signup extends React.Component {
     constructor(props) {
@@ -59,7 +60,7 @@ class Signup extends React.Component {
                         onSubmit={e => {
                             e.preventDefault();
                             axios
-                                .post('http://3.34.193.46:5000/user/signup', this.state)
+                                .post('/user/signup', this.state)
                                 .then(res => {
                                     if (res.status === 409) {
                                         alert('계정이 이미 존재합니다')

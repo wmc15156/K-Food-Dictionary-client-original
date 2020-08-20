@@ -12,6 +12,7 @@ class ContentsInfo extends React.Component {
     render() {
         const dish = this.props.dish;
         const lastFoodname = this.props.lastFoodname;
+        console.log('-------------',dish, lastFoodname,'---------------')
         let foodIdx = this.findFoodIndex(dish, lastFoodname);
 
         console.log(dish);

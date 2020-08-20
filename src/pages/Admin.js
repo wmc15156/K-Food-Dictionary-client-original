@@ -28,30 +28,6 @@ const Admin = (props) => {
     console.log(Image)
     setImage(newImages);
   }
-  // const onChangeName = (e) => {
-  //   // 인풋창에 글 입력시 업데이트
-  //   setFoodName(e.target.value);
-  // };
-
-  // const onChangeFoodSort = (e) => {
-  //   // 인풋창에 글 입력시 업데이트
-  //   setfoodSort(e.target.value);
-  // }
-
-  // const onChangeFoodInfo = (e) => {
-  //   // 인풋창에 글 입력시 업데이트
-  //   setFoodInfo(e.target.value);
-  // }
-
-  // const onChangeTip = (e) => {
-  //   // 인풋창에 글 입력시 업데이트
-  //   setTip(e.target.value);
-  // }
-
-  // const onChangeSpicy = (e) => {
-  //   // 인풋창에 글 입력시 업데이트
-  //   setSpicy(e.target.value);
-  // }
 
   const handleChange = (value) => {
     setSpicy(value);

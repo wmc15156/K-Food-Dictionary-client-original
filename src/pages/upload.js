@@ -19,7 +19,7 @@ function FileUpload(props) {
         }
         formData.append("file", files[0])
 
-        axios.post('http://3.34.193.46:5000/product/saveImage', formData, config)
+        axios.post('/product/saveImage', formData, config)
             .then(response => {
                 console.log(response.data);
                 if (response.data.success) {
