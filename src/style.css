@@ -1,9 +1,9 @@
 
 .mainPageLogo {
     margin: auto;
-    width: 500px;
-    height: 200px;
-    float: left;
+    width: 300px;
+    /* height: 200px; */
+    float: top;
 }
 
 .mainPageBox {
@@ -19,6 +19,12 @@
     height: 450px;
     width: 450px;
     border-radius: 70%;
+}
+
+.listTitle {
+    text-align: center;
+    margin: auto;
+    padding: 50px;
 }
 
 .NavBar {
