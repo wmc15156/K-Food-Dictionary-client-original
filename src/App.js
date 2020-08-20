@@ -1,6 +1,6 @@
 /* eslint-disable no-unused-vars */
 import React from 'react';
-import { Switch, Route, useHistory, Redirect, Router, BrowserRouter,withRouter } from 'react-router-dom';
+import { Switch, Route, useHistory, Redirect, Router, BrowserRouter, withRouter } from 'react-router-dom';
 
 import Login from './pages/Login';
 import Signup from './pages//Signup';
@@ -15,6 +15,7 @@ import DessertList from "./pages/MainPageList/DessertList"
 import OnboardNav from "./pages/OnboardNav";
 import NotFound from "./pages/NotFound";
 import LogOut from "./pages/LogOut";
+import NoodleList from './pages/MainPageList/NoodleList';
 
 class App extends React.Component {
   constructor(props) {
@@ -23,7 +24,7 @@ class App extends React.Component {
     this.state = {
       isLogin: "",
       userinfo: {},
-      email:'',
+      email: '',
       foods: [
         { id: 1, foodname: '삼겹살', sort: 'meat1', url: "https://bit.ly/2Cq602i" },
         { id: 2, foodname: '안심', sort: 'meat', url: "https://bit.ly/3iIVtPp" },
@@ -44,10 +45,10 @@ class App extends React.Component {
   handleIsLoginChange() {
     const user = JSON.parse(localStorage.getItem('user'));
     this.setState({ isLogin: true });
-    axios.get('http://3.34.193.46:5000/user/info',{ headers: { authorization: user }})
+    axios.get('http://3.34.193.46:5000/user/info',
+      { headers: { authorization: user } })
       .then(res => {
-        console.log(res.data, 'email')
-        this.setState({ 
+        this.setState({
           userinfo: res.data,
           email: res.data.email || res.data[0].email
         });
@@ -59,11 +60,18 @@ class App extends React.Component {
     localStorage.clear()
   }
 
+  //찜이 되었을때, 원래 찜된목록일때 표시해야함
   favoritPost(foodname) {
     const user = JSON.parse(localStorage.getItem('user'));
     axios.get(`http://3.34.193.46:5000/product/like/${foodname}`, { headers: { authorization: user } })
-      .then(res => {
-        console.log(res)
+      .then(() => {
+        axios.get('http://3.34.193.46:5000/user/info',
+          { headers: { authorization: user } })
+          .then(res => {
+            this.setState({
+              userinfo: res.data,
+            });
+          });
       })
   }
 
@@ -71,34 +79,34 @@ class App extends React.Component {
     // 이부분은 테스트용도로 만들었습니다. -현진-
     // 최초 업로드될때 유저정보를 불러와서 로그인상태여부 확인용도
     // 에러 나는부분
-  
-   console.log('로딩');
-   let googleurl = window.location.href.split('=')
-   if(googleurl[1]) {
-     googleurl = googleurl[1].slice(0, googleurl[1].length-1);
-     localStorage.setItem('user',JSON.stringify(googleurl));
-     this.props.history.push('/');
-   }
-   const user = JSON.parse(localStorage.getItem('user'));
-   if(user) {
-     this.setState({
-       isLogin: true
-     });
-    axios.get('http://3.34.193.46:5000/user/info', { headers: { authorization: user }})
-     .then((res) => {
-       this.setState({
-        email: res.data.email || res.data[0].email
-       });
-     })
-   } else {
-    this.setState({
-      isLogin: false
-    });
-   }
+
+    console.log('로딩');
+    let googleurl = window.location.href.split('=')
+    if (googleurl[1]) {
+      googleurl = googleurl[1].slice(0, googleurl[1].length - 1);
+      localStorage.setItem('user', JSON.stringify(googleurl));
+      this.props.history.push('/');
+    }
+    const user = JSON.parse(localStorage.getItem('user'));
+    if (user) {
+      this.setState({
+        isLogin: true
+      });
+      axios.get('http://3.34.193.46:5000/user/info', { headers: { authorization: user } })
+        .then((res) => {
+          this.setState({
+            email: res.data.email || res.data[0].email
+          });
+        })
+    } else {
+      this.setState({
+        isLogin: false
+      });
+    }
   }
 
   render() {
-    console.log(this.state.email,222222);
+    console.log(this.state.email, 222222);
     const { isLogin, userinfo, email } = this.state;
     console.log(isLogin, userinfo, '로그인 여부와 유저 인포');
     return (
@@ -121,6 +129,7 @@ class App extends React.Component {
             <Route exact path="/meatList"><MeatList dish={this.state.foods} isLogin={isLogin} handleFoodsChange={this.handleFoodsChange.bind(this)} /></Route>
             <Route exact path="/dessertList"><DessertList isLogin={isLogin} dish={this.state.foods} handleFoodsChange={this.handleFoodsChange.bind(this)} /></Route>
             <Route exact path="/seafoodList"><SeaList isLogin={isLogin} dish={this.state.foods} handleFoodsChange={this.handleFoodsChange.bind(this)} /></Route>
+            <Route exact path="/noodleList"><NoodleList isLogin={isLogin} dish={this.state.foods} handleFoodsChange={this.handleFoodsChange.bind(this)} /></Route>
             <Route exact path="/contents/:name"><Contents favoritPost={this.favoritPost.bind(this)} dish={this.state.foods} /></Route>
             <Route exact path="/"><Home /></Route>
             <Route><NotFound /></Route>

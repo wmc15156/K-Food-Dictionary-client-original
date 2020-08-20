@@ -3,6 +3,7 @@ import { Link } from "react-router-dom";
 import meatImg from "../images/meat.jpg";
 import seafoodImg from "../images/seafood.jpg";
 import dessertImg from "../images/dessert.jpg";
+import noodleImg from "../images/noodle.jpg"
 
 // 이 페이지는 홈 페이지입니다.
 // 대분류 카테고리로써 세가지의 이미지 분류로 나눴습니다.
@@ -27,6 +28,11 @@ class Home extends React.Component {
                 <Link to="/meatList" className="link">
                     <img id="mainPageImage" src={meatImg} alt="main"></img>
                     MEAT
+                </Link>
+
+                <Link to="/noodleList" className="link">
+                    <img id="mainPageImage" src={noodleImg} alt="main"></img>
+                    NOODLE
                 </Link>
             </div >
         );
