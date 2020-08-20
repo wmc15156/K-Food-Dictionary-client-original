@@ -3,12 +3,7 @@ import { Link } from 'react-router-dom';
 import img from "../images/logo.jpg";
 
 class LogOutNav extends React.Component {
-  constructor(props) {
-    super(props)
-  }
-
     render() {
-      
         return (
             <div>
                 <div className="NavBar">
