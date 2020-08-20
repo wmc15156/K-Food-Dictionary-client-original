@@ -3,7 +3,7 @@ import YTSearch from 'youtube-api-search';
 import VideoList from './ContentsPage/video_list'
 import VideoPlayer from './ContentsPage/video-player';
 import ContentsInfo from '../pages/ContentsPage/contentsInfo';
-const API_KEY = "/"
+const API_KEY = "AIzaSyAhq1qzOMHaJx8jW4eXhyhAXUJ73xKVsqo";
 const lastURL = window.location.href
 class Contents extends Component {
     constructor(props) {
@@ -42,16 +42,17 @@ class Contents extends Component {
         const { favoritPost } = this.props;
 
         let lasturl = window.location.href.split('/')
-        let lastFoodnameNum = decodeURI(lasturl[4])
-        let lastFoodname = lastFoodnameNum.split(':')
+        let lastFoodname = decodeURI(lasturl[4])
         console.log('음식이름', lastFoodname[0]);
-        let foodNum = lastFoodname[1]
+        const { findFoodIndex } = this.props;
+
 
 
         return (
+
             <div>
                 <VideoPlayer video={this.state.currentVideo} />
-                <ContentsInfo dish={this.props.dish} foodNum={foodNum} />
+                <ContentsInfo dish={this.props.dish} lastFoodname={lastFoodname} findFoodIndex={findFoodIndex} />
                 <button onClick={() => favoritPost(lastFoodname[0])} className="favoritBt">찜하기</button>
                 <button onClick={() => this.naverShare()}>네이버공유하기</button>
                 <VideoList
