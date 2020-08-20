@@ -20,7 +20,6 @@ const Admin = (props) => {
   const [tip, onChangeTip] = useInput('');
   const [spicy, setSpicy] = useState(3);
   const [value] = useState(3);
-  // const [setValue] = useState(3);
 
   const updateImages = (newImages) => {
     // 자식컴포넌트 값 부모 컴포넌트로 끌어올리기(lift-up)
@@ -81,7 +80,7 @@ const Admin = (props) => {
               <span>
                 <Rate tooltips={desc} onChange={handleChange} value={spicy} />
                 {value ? <span className="ant-rate-text">{desc[spicy - 1]}</span> : ''}
-                </span>
+              </span>
               <br />
               <br />
               <br />

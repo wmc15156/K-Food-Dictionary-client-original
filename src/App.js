@@ -18,7 +18,6 @@ import LogOut from "./pages/LogOut";
 import NoodleList from './pages/MainPageList/NoodleList';
 
 axios.defaults.baseURL = 'http://3.34.193.46:5000';
-// 3.34.193.46:5000/
 class App extends React.Component {
   constructor(props) {
     super(props)
@@ -26,7 +25,7 @@ class App extends React.Component {
       isLogin: "",
       userinfo: {},
       email: '',
-      foods: props.initData // []
+      foods: props.initData
     };
   }
 
@@ -54,7 +53,7 @@ class App extends React.Component {
     this.setState({ isLogin: false });
     localStorage.clear()
   }
-  
+
   updateUserInfo(data) {
     console.log('update');
     this.setState({
@@ -63,7 +62,6 @@ class App extends React.Component {
   }
 
   favoritPost(foodname) {
-    console.log(foodname, '213213213123----------')
     const user = JSON.parse(localStorage.getItem('user'));
     axios.get(`product/like/${foodname}`, { headers: { authorization: user } })
       .then(() => {
@@ -98,7 +96,7 @@ class App extends React.Component {
       axios.get('/user/info', { headers: { authorization: user } })
         .then((res) => {
           // 새로고침시 userInfo 정보 업데이트
-          if(res.data.length > 1) {
+          if (res.data.length > 1) {
             this.setState({
               userinfo: res.data,
             });
@@ -135,7 +133,7 @@ class App extends React.Component {
               render={() => <Signup isLogin={isLogin} />}
             />
             <Route exact path="/mypage"
-              render={() => <Mypage isLogin={isLogin} userinfo={userinfo} updateUserInfo={this.updateUserInfo.bind(this)}/>}
+              render={() => <Mypage isLogin={isLogin} userinfo={userinfo} updateUserInfo={this.updateUserInfo.bind(this)} />}
             />
             <Route exact path="/logout" render={() => <LogOut isLogin={isLogin} handleIsLogoutChange={this.handleIsLogoutChange.bind(this)} />} />
             <Route exact path="/admin"><Admin /></Route>
@@ -143,7 +141,7 @@ class App extends React.Component {
             <Route exact path="/dessertList"><DessertList isLogin={isLogin} dish={this.state.foods} handleFoodsChange={this.handleFoodsChange.bind(this)} /></Route>
             <Route exact path="/seafoodList"><SeaList isLogin={isLogin} dish={this.state.foods} handleFoodsChange={this.handleFoodsChange.bind(this)} /></Route>
             <Route exact path="/noodleList"><NoodleList isLogin={isLogin} dish={this.state.foods} handleFoodsChange={this.handleFoodsChange.bind(this)} /></Route>
-            <Route exact path="/contents/:name"><Contents favoritPost={this.favoritPost.bind(this)} dish={this.state.foods}/></Route>
+            <Route exact path="/contents/:name"><Contents favoritPost={this.favoritPost.bind(this)} dish={this.state.foods} /></Route>
             <Route exact path="/"><Home /></Route>
             <Route><NotFound /></Route>
           </Switch>

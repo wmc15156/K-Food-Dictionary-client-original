@@ -42,9 +42,6 @@ function FileUpload(props) {
         setImages(newImages)// 스테이트 업데이트
         props.updateImages(newImages) // 부모 컴포넌트 Image state업데이트
     }
-    // const like = () => {
-    //   console.log('클릭드');
-    // }
 
     return (
         //Dropzone 부분은 npm 공식문서에 있는 부분 복사 / 붙여넣기 하였습니다.
