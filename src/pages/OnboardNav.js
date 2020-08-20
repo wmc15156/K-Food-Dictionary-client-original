@@ -9,9 +9,7 @@ class OnboardNav extends React.Component {
         this.isLogin = this.props.isLogin;
     }
     render() {
-        
-        const { email } = this.props;
-        console.log(this.props.email,'prppppp');
+        // console.log(this.props.email, 'prppppp');
         // const data = email[0].email || email.email;
         // console.log(data,'data');
         return (<div className="NavBar">
