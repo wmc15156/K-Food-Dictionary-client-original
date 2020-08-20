@@ -20,14 +20,14 @@ class MeatList extends React.Component {
             let url = `contents/${foodname}`;
             lists.push(
                 <div key={meatFoodDish[i].id}>
-                    <Link to={url}>
-                        <p>
-                            <img src={meatFoodDish[i].image} alt="foods"></img>
-                        </p>
-                    </Link>
                     <span>
                         {foodname}
                     </span>
+                    <Link to={url}>
+                        <p>
+                            <img src={meatFoodDish[i].image} alt="foods" className="foodList"></img>
+                        </p>
+                    </Link>
                 </div>
             )
             i = i + 1;
@@ -35,7 +35,7 @@ class MeatList extends React.Component {
 
         return (
             <div>
-                <h2 >육류 페이지입니다.</h2>
+                <h2 >저기압일 땐? 고기 앞으로!</h2>
                 {lists}
             </div>
         )

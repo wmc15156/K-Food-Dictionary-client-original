@@ -20,14 +20,14 @@ class DessertList extends React.Component {
             let url = `contents/${foodname}`;
             lists.push(
                 <div key={dessertFoodDish[i].id}>
-                    <Link to={url}>
-                        <p>
-                            <img src={dessertFoodDish[i].image} alt='foods'></img>
-                        </p>
-                    </Link>
                     <span>
                         {dessertFoodDish[i].foodname}
                     </span>
+                    <Link to={url}>
+                        <p>
+                            <img src={dessertFoodDish[i].image} alt='foods' className="foodList"></img>
+                        </p>
+                    </Link>
                 </div>
             )
             i = i + 1;
@@ -35,7 +35,7 @@ class DessertList extends React.Component {
 
         return (
             <div>
-                <h2 >디저트 페이지입니다.</h2>
+                <h2>디저트 배는 따로 있습니다.</h2>
                 {lists}
             </div>
         )

@@ -1,37 +1,43 @@
 
 .mainPageLogo {
-    display: inline-block;
     margin: auto;
-    max-width: 150px;
+    width: 500px;
+    height: 200px;
+    float: left;
 }
 
-.mainPageBox {
-    background-color: rgb(232, 243, 229);
-    height: 100%;
-    width: 100%;
-    margin: 100px auto;
-    text-align: center;
-    font-size: 30px;
+
+.foodList {
+    height: 450px;
+    width: 450px;
+    border-radius: 70%;
 }
 
 .NavBar {
     width: 100%;
-    /* margin: 20px auto; */
-    height: 100px;
-    margin-bottom: 0em;
-    background: linear-gradient( #ffffff67 90%, rgb(128, 128, 128) 10%);
-    /* padding-top:; */
+    height: 150px;
 }
 
+
 .link {
-    color: rgb(0, 0, 0);
-    font-family: monospace;
-    font-size: 30px;
+    color: rgb(41, 40, 40);
+    font-family: Impact, Charcoal, sans-serif;
+    font-size: 70px;
     float: right;
     margin-left: 30px;
     margin-right: 30px;
-    margin-bottom: 100px;
+    margin-bottom: 30px;
     margin-top: 15px;
+}
+
+.Navlink {
+    color: rgb(41, 40, 40);
+    font-family: Impact, Charcoal, sans-serif;
+    font-size: 80px;
+    float: right;
+    margin-left: 100px;
+    margin-right: 100px;
+    margin-top: 30px;
 }
 
 .homelink {
@@ -55,15 +61,7 @@
 .favoriteFood {
     margin: 0px;
     padding: 5px;
-    /* height: 500px; */
     background-color: rgb(190, 190, 190);
-}
-
-.inputForm{
-    width: 400px;
-    height: 30px;
-    margin: 5px;
-    border-radius: 5px;
 }
 
 .button {
@@ -81,10 +79,14 @@
     color: red;
 }
 
+
 #mainPageImage {
-    display: block;
-    margin: auto;
     width: 300px;
+    height: 270px;
+    border-radius: 50%;
+    margin-bottom: 100px auto;
+    margin-right: 300px;
+    display: block;
 }
 
 #categoryImage {
@@ -143,48 +145,36 @@ padding-top: 50px;
 }
 
 .mainPI{
- /* background-size:cover; */
  width: 100%;
+ height: 100%;
 
 }
 
-.inputForm{
-    border: 1px solid #999;
-    padding: .8em .5em;
-    border-radius: 2%
+.HomeTitle{
+    color: rgb(41, 40, 40);
+    font-family: Impact, Charcoal, sans-serif;
+    font-size: 100px;
+    margin: 80px;
 }
 
- .signupBtn .loginBtn {
-    box-shadow:inset 0px 1px 0px 0px #ffffff;
+ .signupBtn {
+	box-shadow:inset 0px 1px 0px 0px #ffffff;
 	background:linear-gradient(to bottom, #ffffff 5%, #f6f6f6 100%);
 	background-color:#ffffff;
 	border-radius:6px;
 	border:1px solid #dcdcdc;
 	display:inline-block;
 	cursor:pointer;
-	color:#666666;
+	color:#3ca5d9;
 	font-family:Arial;
-	font-size:24px;
+	font-size:38px;
 	font-weight:bold;
 	padding:6px 24px;
 	text-decoration:none;
 	text-shadow:0px 1px 0px #ffffff;
-}
-.googleBtn{
-    box-shadow:inset 0px 1px 0px 0px #ffffff;
-	background:linear-gradient(to bottom, #ffffff 5%, #f6f6f6 100%);
-	background-color:#ffffff;
-	border-radius:6px;
-	border:1px solid #dcdcdc;
-	display:inline-block;
-	cursor:pointer;
-	color:#666666;
-	font-family:Arial;
-	font-size:24px;
-	font-weight:bold;
-	padding:6px 24px;
-	text-decoration:none;
-	text-shadow:0px 1px 0px #ffffff;
+    margin-bottom: 25px;
+    margin-top: 15px;
+    margin-left: 520px;
 }
 
 .loginBtn {
@@ -195,16 +185,69 @@ padding-top: 50px;
 	border:1px solid #dcdcdc;
 	display:inline-block;
 	cursor:pointer;
-	color:#666666;
+	color:#3ca5d9;
 	font-family:Arial;
-	font-size:24px;
+	font-size:38px;
 	font-weight:bold;
 	padding:6px 24px;
 	text-decoration:none;
 	text-shadow:0px 1px 0px #ffffff;
+    margin-bottom: 35px;
+    margin-top: 15px;
 }
 
-/* .fbLogin{
+.googleBtn{
+    box-shadow:inset 0px 1px 0px 0px #ffffff;
+	background:linear-gradient(to bottom, #ffffff 5%, #f6f6f6 100%);
+	background-color:#ffffff;
+	border-radius:6px;
+	border:1px solid #dcdcdc;
+	display:inline-block;
+	cursor:pointer;
+	color:#666666;
+	font-size:24px;
+	font-weight:bold;
+	padding:6px 24px;
+	text-decoration:none;
+    text-shadow:0px 1px 0px #ffffff;
+    margin-left: 30px;
+}
 
-} */
 
+.loginBox{
+    margin-top: 500px;
+    margin:100px auto;
+    border: 1px solid gray;
+    border-radius: 5px;
+    padding: 60px 30px 40px 30px;
+    width:1200px;
+
+}
+
+#loginBox h1{
+
+    border-bottom: 1px;
+}
+
+.inputForm{
+    border: 1px solid #999;
+    padding: .8em .5em;
+    border-radius: 5px;
+    margin-top: 30px;
+    margin-bottom: 40px;
+    font-size: 50px;
+    height: 30px;
+}
+
+.mainPageBox {
+    height: 100%;
+    width: 100%;
+    margin-top: 250px;
+    text-align: center;
+    font-size: 30px;
+}
+
+.loginBox h1{
+font-size: 100px;
+font-family: 'Courgette', cursive;
+}

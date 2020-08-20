@@ -4,32 +4,35 @@ import meatImg from "../images/meat.jpg";
 import seafoodImg from "../images/seafood.jpg";
 import dessertImg from "../images/dessert.jpg";
 import noodleImg from "../images/noodle.jpg"
-// import back from '../images/back.jpg';
+import back from "../images/back.jpg"
 
 class Home extends React.Component {
     render() {
         return (
-            <div className="homeP">
-
-                {/* <h1 className="homePN">Home page</h1> */}
+            <div id='homeP' className="homeP">
+                <img className="mainPI" src={back} alt="main"></img>
+                <h1 className="HomeTitle">It's all about Korean Food</h1>
                 <Link to="/dessertList" className="link">
-                    <img id="mainPageImage" src={dessertImg} alt="main"></img>
                     DESSERT
+                    <img id="mainPageImage" src={dessertImg} alt="main"></img>
                 </Link>
 
                 <Link to="/seafoodList" className="link">
-                    <img id="mainPageImage" src={seafoodImg} alt="main"></img>
                     SEAFOOD
+                    <img id="mainPageImage" src={seafoodImg} alt="main"></img>
+
                 </Link>
 
                 <Link to="/meatList" className="link">
-                    <img id="mainPageImage" src={meatImg} alt="main"></img>
                     MEAT
+                    <img id="mainPageImage" src={meatImg} alt="main"></img>
+
                 </Link>
 
                 <Link to="/noodleList" className="link">
-                    <img id="mainPageImage" src={noodleImg} alt="main"></img>
                     NOODLE
+                    <img id="mainPageImage" src={noodleImg} alt="main"></img>
+
                 </Link>
             </div >
         );

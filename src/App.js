@@ -16,7 +16,6 @@ import OnboardNav from "./pages/OnboardNav";
 import NotFound from "./pages/NotFound";
 import LogOut from "./pages/LogOut";
 import NoodleList from './pages/MainPageList/NoodleList';
-import back from './images/back.jpg';
 
 class App extends React.Component {
   constructor(props) {
@@ -61,7 +60,6 @@ class App extends React.Component {
     localStorage.clear()
   }
 
-  //찜이 되었을때, 원래 찜된목록일때 표시해야함
   favoritPost(foodname) {
     const user = JSON.parse(localStorage.getItem('user'));
     axios.get(`http://3.34.193.46:5000/product/like/${foodname}`, { headers: { authorization: user } })
@@ -78,7 +76,7 @@ class App extends React.Component {
   }
 
   componentDidMount() {
-    // 이부분은 테스트용도로 만들었습니다. -현진-
+    // 이부분은 테스트용도로 만들었습니다.
     // 최초 업로드될때 유저정보를 불러와서 로그인상태여부 확인용도
     // 에러 나는부분
 
@@ -114,7 +112,6 @@ class App extends React.Component {
     return (
       <BrowserRouter>
         <OnboardNav isLogin={isLogin} email={email}></OnboardNav>
-        <img className="mainPI" src={back} alt="main"></img>
         <div className="mainPageBox">
           <Switch>
             <Route exact path="/login"
