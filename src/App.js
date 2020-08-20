@@ -29,6 +29,7 @@ class App extends React.Component {
     };
   }
 
+
   handleFoodsChange(kindOf) {
     axios.get(`/product/sort/${kindOf}`)
       .then(res => {

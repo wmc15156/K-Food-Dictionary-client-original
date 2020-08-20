@@ -1,6 +1,17 @@
 import React from 'react';
+import { withRouter, Link,Route } from 'react-router-dom';
+import App from '../../App'
+
+let dbDish;
+let dblastFoodname;
 
 class ContentsInfo extends React.Component {
+  constructor(props) {
+    super(props)
+    this.state = {
+      test: false
+    };
+  }
     findFoodIndex(dish, lastFoodname) {
         for (let i = 0; i < dish.length; i++) {
             if (dish[i].foodname === lastFoodname) {
@@ -10,14 +21,24 @@ class ContentsInfo extends React.Component {
     }
 
     render() {
-        const dish = this.props.dish;
-        const lastFoodname = this.props.lastFoodname;
+      
+        let dish = this.props.dish;
+        let lastFoodname = this.props.lastFoodname;
+        if(lastFoodname !== 'undefined') {
+          dbDish = dish;
+          dblastFoodname = lastFoodname
+        }
+        if(lastFoodname === 'undefined') {
+          lastFoodname = dblastFoodname;
+          dish = dbDish;
+        }
+
         console.log('-------------',dish, lastFoodname,'---------------')
         let foodIdx = this.findFoodIndex(dish, lastFoodname);
-
-        console.log(dish);
         console.log(`여기는콘텐츠인포123123123:${foodIdx}`);
         console.log(`여기는콘텐츠인포: ${lastFoodname}`);
+
+       
         return (
             <div className="FoodInfoBox">
                 <h3>{dish[foodIdx].foodname}</h3>
@@ -29,4 +50,4 @@ class ContentsInfo extends React.Component {
     }
 }
 
-export default ContentsInfo;
+export default withRouter(ContentsInfo);
