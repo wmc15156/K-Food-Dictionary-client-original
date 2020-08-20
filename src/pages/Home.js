@@ -9,27 +9,30 @@ import noodleImg from "../images/noodle.jpg"
 class Home extends React.Component {
     render() {
         return (
-            <div className="homeP">
+            <div id='homeP' className="homeP">
 
                 {/* <h1 className="homePN">Home page</h1> */}
                 <Link to="/dessertList" className="link">
-                    <img id="mainPageImage" src={dessertImg} alt="main"></img>
                     DESSERT
+                    <img id="mainPageImage" src={dessertImg} alt="main"></img>
                 </Link>
 
                 <Link to="/seafoodList" className="link">
-                    <img id="mainPageImage" src={seafoodImg} alt="main"></img>
                     SEAFOOD
+                    <img id="mainPageImage" src={seafoodImg} alt="main"></img>
+
                 </Link>
 
                 <Link to="/meatList" className="link">
-                    <img id="mainPageImage" src={meatImg} alt="main"></img>
                     MEAT
+                    <img id="mainPageImage" src={meatImg} alt="main"></img>
+
                 </Link>
 
                 <Link to="/noodleList" className="link">
-                    <img id="mainPageImage" src={noodleImg} alt="main"></img>
                     NOODLE
+                    <img id="mainPageImage" src={noodleImg} alt="main"></img>
+
                 </Link>
             </div >
         );
