@@ -9,6 +9,9 @@ class SeaList extends React.Component {
         const { handleFoodsChange } = this.props;
         handleFoodsChange('해산물');
     }
+    componentDidMount() {
+        window.scrollTo(0, 0)
+    }
     render() {
         var lists = [];
         const seaFoodDish = this.props.dish;
@@ -19,23 +22,28 @@ class SeaList extends React.Component {
             let url = `contents/${foodname}`;
             lists.push(
                 <div key={seaFoodDish[i].id}>
-                    <Link to={url}>
-                        <p>
-                            <img src={seaFoodDish[i].image} alt='foods'></img>
-                        </p>
-                    </Link>
                     <span>
                         {seaFoodDish[i].foodname}
                     </span>
+                    <Link to={url}>
+                        <p>
+                            <img src={seaFoodDish[i].image} alt='foods' className="foodList"></img>
+                        </p>
+                    </Link>
                 </div>
             )
             i = i + 1;
         }
 
         return (
-            <div>
-                <h2 >해산물 페이지입니다.</h2>
-                {lists}
+            <div className="listTitle">
+                <div>
+                    <h2 className="listTitle">맛과 영양이 풍부한 해산물 요리!</h2>
+                </div>
+                <div>
+                    {lists}
+                </div>
+
             </div>
         )
     }

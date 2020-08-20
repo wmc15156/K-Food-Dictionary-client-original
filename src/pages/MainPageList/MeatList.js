@@ -10,6 +10,10 @@ class MeatList extends React.Component {
         handleFoodsChange('고기');
     }
 
+    componentDidMount() {
+        window.scrollTo(0, 0)
+    }
+
     render() {
         var lists = [];
         const meatFoodDish = this.props.dish;
@@ -20,23 +24,29 @@ class MeatList extends React.Component {
             let url = `contents/${foodname}`;
             lists.push(
                 <div key={meatFoodDish[i].id}>
-                    <Link to={url}>
-                        <p>
-                            <img src={meatFoodDish[i].image} alt="foods"></img>
-                        </p>
-                    </Link>
                     <span>
                         {foodname}
                     </span>
+                    <Link to={url}>
+                        <p>
+                            <img src={meatFoodDish[i].image} alt="foods" className="foodList"></img>
+                        </p>
+                    </Link>
                 </div>
             )
             i = i + 1;
         }
 
         return (
-            <div>
-                <h2 >육류 페이지입니다.</h2>
-                {lists}
+
+            <div className="listTitle">
+                <div>
+                    <h2 className="listTitle">저기압일 땐? 고기 앞으로!</h2>
+                </div>
+                <div>
+                    {lists}
+                </div>
+
             </div>
         )
     }

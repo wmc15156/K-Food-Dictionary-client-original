@@ -9,6 +9,9 @@ class DessertList extends React.Component {
         const { handleFoodsChange } = this.props;
         handleFoodsChange('디저트');
     }
+    componentDidMount() {
+        window.scrollTo(0, 0)
+    }
 
     render() {
         var lists = [];
@@ -20,23 +23,28 @@ class DessertList extends React.Component {
             let url = `contents/${foodname}`;
             lists.push(
                 <div key={dessertFoodDish[i].id}>
-                    <Link to={url}>
-                        <p>
-                            <img src={dessertFoodDish[i].image} alt='foods'></img>
-                        </p>
-                    </Link>
                     <span>
                         {dessertFoodDish[i].foodname}
                     </span>
+                    <Link to={url}>
+                        <p>
+                            <img src={dessertFoodDish[i].image} alt='foods' className="foodList"></img>
+                        </p>
+                    </Link>
                 </div>
             )
             i = i + 1;
         }
 
         return (
-            <div>
-                <h2 >디저트 페이지입니다.</h2>
-                {lists}
+            <div className="listTitle">
+                <div>
+                    <h2 className="listTitle">디저트 배는 따로 있습니다.</h2>
+                </div>
+                <div>
+                    {lists}
+                </div>
+
             </div>
         )
     }

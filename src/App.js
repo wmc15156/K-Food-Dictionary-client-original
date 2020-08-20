@@ -16,6 +16,7 @@ import OnboardNav from "./pages/OnboardNav";
 import NotFound from "./pages/NotFound";
 import LogOut from "./pages/LogOut";
 import NoodleList from './pages/MainPageList/NoodleList';
+// import back from './images/back.jpg';
 
 axios.defaults.baseURL = 'http://3.34.193.46:5000';
 // 3.34.193.46:5000/
