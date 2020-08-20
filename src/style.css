@@ -4,21 +4,30 @@
     margin: auto;
     max-width: 150px;
 }
-
-.mainPageBox {
+/* .homeP{
     background-color: rgb(240, 240, 240);
     height: 100%;
     width: 80%;
     margin: 100px auto;
     text-align: center;
     font-size: 30px;
+} */
+.mainPageBox {
+    background-color: rgb(63, 243, 18);
+    height: 100%;
+    width: 100%;
+    margin: 100px auto;
+    text-align: center;
+    font-size: 30px;
 }
 
 .NavBar {
-    width: 80%;
-    margin: 20px auto;
+    width: 100%;
+    /* margin: 20px auto; */
     height: 100px;
+    margin-bottom: 0em;
     background: linear-gradient( #ffffff67 90%, rgb(128, 128, 128) 10%);
+    /* padding-top:; */
 }
 
 .link {
@@ -70,7 +79,7 @@
     margin: 5px;
     border-radius: 5px;
     background-color: lightblack;
-    color: black;
+    color: rgb(160, 78, 78);
 }
 
 .invalid-feedback {
@@ -140,3 +149,8 @@ padding-top: 50px;
   height:100%;
 }
 
+.mainPI{
+ /* background-size:cover; */
+ width: 100%;
+
+}
