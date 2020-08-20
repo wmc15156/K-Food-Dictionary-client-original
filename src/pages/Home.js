@@ -11,7 +11,7 @@ class Home extends React.Component {
         return (
             <div id='homeP' className="homeP">
                 <img className="mainPI" src={back} alt="main"></img>
-                <h1 className="HomeTitle">It's all about Korean Food</h1>
+                <h1 className="HomeTitle">It&apos;s all about Korean Food</h1>
                 <Link to="/dessertList" className="link">
                     DESSERT
                     <img id="mainPageImage" src={dessertImg} alt="main"></img>

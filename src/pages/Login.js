@@ -28,16 +28,16 @@ class Login extends React.Component {
     const { handleIsLoginChange } = this.props;
 
     return (
-      <div>
-        <center>
-
+      <div className="loginBack">
+        <center className="loginBox" >
+          <link href="https://fonts.googleapis.com/css2?family=Courgette&display=swap" rel="stylesheet"></link>
           <h1>Login</h1>
 
           <form
             onSubmit={e => {
               e.preventDefault();
               return axios
-                .post('http://3.34.193.46:5000/user/login', {
+                .post('/user/login', {
                   email: email,
                   password: password
                 })
@@ -49,6 +49,7 @@ class Login extends React.Component {
                 .catch(err => console.log(err));
             }}
           >
+
             <div>
               <input className="inputForm"
                 type="email"
@@ -64,17 +65,21 @@ class Login extends React.Component {
                 onChange={this.handleInputValue('password')}>
               </input>
             </div>
-            <button className="button" type="submit">
-              Login
+            <div>
+              <button className="loginBtn" type="submit">
+                Login
             </button>
+            </div>
+            <div id="snsLogin">
+              <span className="fbLogin">
+                <Facebook />
+              </span>
 
-            <span className="fbLogin">
-              <Facebook />
-            </span>
-
+              {/* 밑의 구글로그인 부분은 a태그로 무조건 감싸져야 합니다. -현진- */}
+              <a href="http://3.34.193.46.xip.io:5000/auth/google" className="googleBtn">
+                <img src="https://img.icons8.com/color/48/000000/google-logo.png" />Google with Login</a>
+            </div>
           </form>
-          {/* 밑의 구글로그인 부분은 a태그로 무조건 감싸져야 합니다. -현진- */}
-          <a href="http://3.34.193.46.xip.io:5000/auth/google"> 구글로그인 </a>
         </center>
       </div>
     );

@@ -53,13 +53,13 @@ class Signup extends React.Component {
         const { email, password, mobile, username } = this.state;
         return (
             <div>
-                <center>
+                <center className="loginBox">
                     <h1>Sign Up</h1>
                     <form
                         onSubmit={e => {
                             e.preventDefault();
                             axios
-                                .post('http://3.34.193.46:5000/user/signup', this.state)
+                                .post('/user/signup', this.state)
                                 .then(res => {
                                     if (res.status === 409) {
                                         alert('계정이 이미 존재합니다')
@@ -71,12 +71,11 @@ class Signup extends React.Component {
                                     }
                                 })
                                 .catch(err =>
-                                    console.log(err),
-                                    // alert('가입에 실패했습니다.')
+                                    console.log(err)
                                 );
                         }}
                     >
-
+                        <link href="https://fonts.googleapis.com/css2?family=Courgette&family=Gloria+Hallelujah&display=swap" rel="stylesheet"></link>
                         <div>
                             <input className="inputForm"
                                 placeholder="User Name"
@@ -112,8 +111,7 @@ class Signup extends React.Component {
                             />
                             {this.renderFeedbackMessage()}
                         </div>
-
-                        <button className="button" type="submit">
+                        <button className="signupBtn" type="submit">
                             Signup
                         </button>
                     </form>

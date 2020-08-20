@@ -10,6 +10,10 @@ class MeatList extends React.Component {
         handleFoodsChange('고기');
     }
 
+    componentDidMount() {
+        window.scrollTo(0, 0)
+    }
+
     render() {
         var lists = [];
         const meatFoodDish = this.props.dish;
@@ -34,9 +38,15 @@ class MeatList extends React.Component {
         }
 
         return (
-            <div>
-                <h2 >저기압일 땐? 고기 앞으로!</h2>
-                {lists}
+
+            <div className="listTitle">
+                <div>
+                    <h2 className="listTitle">저기압일 땐? 고기 앞으로!</h2>
+                </div>
+                <div>
+                    {lists}
+                </div>
+
             </div>
         )
     }

@@ -1,13 +1,17 @@
 import React, { Component } from 'react';
+import axios from 'axios';
+
 import YTSearch from 'youtube-api-search';
 import VideoList from './ContentsPage/video_list'
 import VideoPlayer from './ContentsPage/video-player';
 import ContentsInfo from '../pages/ContentsPage/contentsInfo';
+
 const API_KEY = "/";
+
 const lastURL = window.location.href
 class Contents extends Component {
     constructor(props) {
-
+       
         super(props);
 
         this.state = {
@@ -17,7 +21,6 @@ class Contents extends Component {
         let lastURL = window.location.href.split('/')
         this.videoSearch(decodeURI(lastURL[4]) + "먹방");
     }
-
 
     videoSearch(searchTerm) {
         YTSearch({ key: API_KEY, term: searchTerm }, (data) => {
@@ -37,16 +40,13 @@ class Contents extends Component {
     }
 
     render() {
+      console.log('Contents',this.props);
         console.log("로그인여부 :", this.props.isLogin)
 
         const { favoritPost } = this.props;
-
         let lasturl = window.location.href.split('/')
-        let lastFoodname = decodeURI(lasturl[4])
-        console.log('음식이름', lastFoodname[0]);
+        let lastFoodname = decodeURI(lasturl[4]) // 213123123/식혜
         const { findFoodIndex } = this.props;
-
-
 
         return (
             <div>
@@ -59,6 +59,7 @@ class Contents extends Component {
                         videos={this.state.videos} />
                     <ContentsInfo dish={this.props.dish} lastFoodname={lastFoodname} findFoodIndex={findFoodIndex} />
                 </span>
+
             </div>
         );
     }
