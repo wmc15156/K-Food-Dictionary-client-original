@@ -59,6 +59,7 @@ class App extends React.Component {
     localStorage.clear()
   }
 
+  //찜이 되었을때, 원래 찜된목록일때 표시해야함
   favoritPost(foodname) {
     const user = JSON.parse(localStorage.getItem('user'));
     axios.get(`http://3.34.193.46:5000/product/like/${foodname}`, { headers: { authorization: user } })
