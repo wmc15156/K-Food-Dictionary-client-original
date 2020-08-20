@@ -3,7 +3,7 @@ import YTSearch from 'youtube-api-search';
 import VideoList from './ContentsPage/video_list'
 import VideoPlayer from './ContentsPage/video-player';
 import ContentsInfo from '../pages/ContentsPage/contentsInfo';
-const API_KEY = "AIzaSyDsBplF70B03q3MrF2tghZYnYt5IZcFgCI"
+const API_KEY = "/"
 const lastURL = window.location.href
 class Contents extends Component {
     constructor(props) {
