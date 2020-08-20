@@ -4,7 +4,6 @@ import React from "react";
 import { withRouter, Link, useHistory } from "react-router-dom";
 import axios from "axios";
 
-//3.34.193.46:5000
 axios.defaults.withCredentials = true;
 class Signup extends React.Component {
     constructor(props) {
@@ -54,7 +53,7 @@ class Signup extends React.Component {
         const { email, password, mobile, username } = this.state;
         return (
             <div>
-                <center>
+                <center className="loginBox">
                     <h1>Sign Up</h1>
                     <form
                         onSubmit={e => {
@@ -72,12 +71,11 @@ class Signup extends React.Component {
                                     }
                                 })
                                 .catch(err =>
-                                    console.log(err),
-                                    // alert('가입에 실패했습니다.')
+                                    console.log(err)
                                 );
                         }}
                     >
-
+                        <link href="https://fonts.googleapis.com/css2?family=Courgette&family=Gloria+Hallelujah&display=swap" rel="stylesheet"></link>
                         <div>
                             <input className="inputForm"
                                 placeholder="User Name"
@@ -113,8 +111,7 @@ class Signup extends React.Component {
                             />
                             {this.renderFeedbackMessage()}
                         </div>
-
-                        <button className="button" type="submit">
+                        <button className="signupBtn" type="submit">
                             Signup
                         </button>
                     </form>

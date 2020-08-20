@@ -6,14 +6,6 @@
     float: top;
 }
 
-.mainPageBox {
-    background-color: rgb(255, 255, 255);
-    height: 100%;
-    width: 100%;
-    margin: auto;
-    text-align: center;
-    font-size: 30px;
-}
 
 .foodList {
     height: 450px;
@@ -76,13 +68,6 @@
     margin: 0px;
     padding: 5px;
     background-color: rgb(190, 190, 190);
-}
-
-.inputForm{
-    width: 400px;
-    height: 30px;
-    margin: 5px;
-    border-radius: 5px;
 }
 
 .button {
@@ -176,4 +161,99 @@ padding-top: 50px;
     font-family: Impact, Charcoal, sans-serif;
     font-size: 100px;
     margin: 80px;
+}
+
+ .signupBtn {
+	box-shadow:inset 0px 1px 0px 0px #ffffff;
+	background:linear-gradient(to bottom, #ffffff 5%, #f6f6f6 100%);
+	background-color:#ffffff;
+	border-radius:6px;
+	border:1px solid #dcdcdc;
+	display:inline-block;
+	cursor:pointer;
+	color:#3ca5d9;
+	font-family:Arial;
+	font-size:38px;
+	font-weight:bold;
+	padding:6px 24px;
+	text-decoration:none;
+	text-shadow:0px 1px 0px #ffffff;
+    margin-bottom: 25px;
+    margin-top: 15px;
+    margin-left: 520px;
+}
+
+.loginBtn {
+    box-shadow:inset 0px 1px 0px 0px #ffffff;
+	background:linear-gradient(to bottom, #ffffff 5%, #f6f6f6 100%);
+	background-color:#ffffff;
+	border-radius:6px;
+	border:1px solid #dcdcdc;
+	display:inline-block;
+	cursor:pointer;
+	color:#3ca5d9;
+	font-family:Arial;
+	font-size:38px;
+	font-weight:bold;
+	padding:6px 24px;
+	text-decoration:none;
+	text-shadow:0px 1px 0px #ffffff;
+    margin-bottom: 35px;
+    margin-top: 15px;
+}
+
+.googleBtn{
+    box-shadow:inset 0px 1px 0px 0px #ffffff;
+	background:linear-gradient(to bottom, #ffffff 5%, #f6f6f6 100%);
+	background-color:#ffffff;
+	border-radius:6px;
+	border:1px solid #dcdcdc;
+	display:inline-block;
+	cursor:pointer;
+	color:#666666;
+	font-size:24px;
+	font-weight:bold;
+	padding:6px 24px;
+	text-decoration:none;
+    text-shadow:0px 1px 0px #ffffff;
+    margin-left: 30px;
+}
+
+
+.loginBox{
+    margin-top: 500px;
+    margin:100px auto;
+    border: 1px solid gray;
+    border-radius: 5px;
+    padding: 60px 30px 40px 30px;
+    width:1200px;
+
+}
+
+#loginBox h1{
+
+    border-bottom: 1px;
+}
+
+.inputForm{
+    border: 1px solid #999;
+    padding: .8em .5em;
+    border-radius: 5px;
+    margin-top: 30px;
+    margin-bottom: 40px;
+    font-size: 50px;
+    height: 30px;
+}
+
+.mainPageBox {
+    height: 100%;
+    width: 100%;
+    margin-top: 250px;
+    text-align: center;
+    font-size: 30px;
+}
+
+.loginBox h1{
+font-size: 100px;
+font-family: 'Courgette', cursive;
 }
