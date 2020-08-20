@@ -3,7 +3,8 @@ import YTSearch from 'youtube-api-search';
 import VideoList from './ContentsPage/video_list'
 import VideoPlayer from './ContentsPage/video-player';
 import ContentsInfo from '../pages/ContentsPage/contentsInfo';
-const API_KEY = "AIzaSyDsBplF70B03q3MrF2tghZYnYt5IZcFgCI"
+const API_KEY = "/"
+// AIzaSyDsBplF70B03q3MrF2tghZYnYt5IZcFgCI
 const lastURL = window.location.href
 class Contents extends Component {
     constructor(props) {
@@ -52,7 +53,7 @@ class Contents extends Component {
             <div>
                 <VideoPlayer video={this.state.currentVideo} />
                 <ContentsInfo dish={this.props.dish} foodNum={foodNum} />
-                <button onClick={() => favoritPost(lastFoodname)} className="favoritBt">찜하기</button>
+                <button onClick={() => favoritPost(lastFoodname[0])} className="favoritBt">찜하기</button>
                 <button onClick={() => this.naverShare()}>네이버공유하기</button>
                 <VideoList
                     onVideoSelect={userSelected => this.setState({ currentVideo: userSelected })}
