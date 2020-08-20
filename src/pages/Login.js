@@ -64,17 +64,18 @@ class Login extends React.Component {
                 onChange={this.handleInputValue('password')}>
               </input>
             </div>
-            <button className="button" type="submit">
+            <button className="loginBtn" type="submit">
               Login
             </button>
 
-            <span className="fbLogin">
+            <div className="fbLogin">
               <Facebook />
-            </span>
+            </div>
 
           </form>
           {/* 밑의 구글로그인 부분은 a태그로 무조건 감싸져야 합니다. -현진- */}
-          <a href="http://3.34.193.46.xip.io:5000/auth/google"> 구글로그인 </a>
+          <a href="http://3.34.193.46.xip.io:5000/auth/google" className="googleBtn">
+            <img src="https://img.icons8.com/color/48/000000/google-logo.png" />Google with Login</a>
         </center>
       </div>
     );

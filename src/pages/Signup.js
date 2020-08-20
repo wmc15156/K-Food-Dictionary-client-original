@@ -113,7 +113,7 @@ class Signup extends React.Component {
                             {this.renderFeedbackMessage()}
                         </div>
 
-                        <button className="button" type="submit">
+                        <button className="signupBtn" type="submit">
                             Signup
                         </button>
                     </form>
