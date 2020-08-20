@@ -16,6 +16,7 @@ import OnboardNav from "./pages/OnboardNav";
 import NotFound from "./pages/NotFound";
 import LogOut from "./pages/LogOut";
 import NoodleList from './pages/MainPageList/NoodleList';
+import back from './images/back.jpg';
 
 class App extends React.Component {
   constructor(props) {
@@ -113,6 +114,7 @@ class App extends React.Component {
     return (
       <BrowserRouter>
         <OnboardNav isLogin={isLogin} email={email}></OnboardNav>
+        <img className="mainPI" src={back} alt="main"></img>
         <div className="mainPageBox">
           <Switch>
             <Route exact path="/login"
