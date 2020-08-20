@@ -15,6 +15,7 @@ import DessertList from "./pages/MainPageList/DessertList"
 import OnboardNav from "./pages/OnboardNav";
 import NotFound from "./pages/NotFound";
 import LogOut from "./pages/LogOut";
+import NoodleList from './pages/MainPageList/NoodleList';
 
 class App extends React.Component {
   constructor(props) {
@@ -128,7 +129,8 @@ class App extends React.Component {
             <Route exact path="/meatList"><MeatList dish={this.state.foods} isLogin={isLogin} handleFoodsChange={this.handleFoodsChange.bind(this)} /></Route>
             <Route exact path="/dessertList"><DessertList isLogin={isLogin} dish={this.state.foods} handleFoodsChange={this.handleFoodsChange.bind(this)} /></Route>
             <Route exact path="/seafoodList"><SeaList isLogin={isLogin} dish={this.state.foods} handleFoodsChange={this.handleFoodsChange.bind(this)} /></Route>
-            <Route exact path="/contents/:name"><Contents favoritPost={this.favoritPost.bind(this)} handleIsLoginChange={this.handleIsLoginChange.bind(this)} dish={this.state.foods} /></Route>
+            <Route exact path="/noodleList"><NoodleList isLogin={isLogin} dish={this.state.foods} handleFoodsChange={this.handleFoodsChange.bind(this)} /></Route>
+            <Route exact path="/contents/:name"><Contents favoritPost={this.favoritPost.bind(this)} dish={this.state.foods} /></Route>
             <Route exact path="/"><Home /></Route>
             <Route><NotFound /></Route>
           </Switch>
