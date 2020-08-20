@@ -15,11 +15,11 @@ class LogInNav extends React.Component {
                         'Admin' :
                         null
                     }</Link>
-                    <Link to="/mypage" className="Navlink">Mypage</Link>
-                    <Link to="/logout" className="Navlink" >Logout</Link>
                     <Link to="/" className="homelink">
                         <img className="mainPageLogo" src={img} alt="logo"></img>
                     </Link>
+                    <Link to="/mypage" className="Navlink">Mypage</Link>
+                    <Link to="/logout" className="Navlink" >Logout</Link>
                 </div>
             </div >
         );
