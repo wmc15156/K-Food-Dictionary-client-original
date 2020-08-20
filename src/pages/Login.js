@@ -37,7 +37,7 @@ class Login extends React.Component {
             onSubmit={e => {
               e.preventDefault();
               return axios
-                .post('http://3.34.193.46:5000/user/login', {
+                .post('/user/login', {
                   email: email,
                   password: password
                 })

@@ -9,6 +9,9 @@ class DessertList extends React.Component {
         const { handleFoodsChange } = this.props;
         handleFoodsChange('디저트');
     }
+    componentDidMount() {
+        window.scrollTo(0, 0)
+    }
 
     render() {
         var lists = [];
@@ -34,9 +37,14 @@ class DessertList extends React.Component {
         }
 
         return (
-            <div>
-                <h2>디저트 배는 따로 있습니다.</h2>
-                {lists}
+            <div className="listTitle">
+                <div>
+                    <h2 className="listTitle">디저트 배는 따로 있습니다.</h2>
+                </div>
+                <div>
+                    {lists}
+                </div>
+
             </div>
         )
     }

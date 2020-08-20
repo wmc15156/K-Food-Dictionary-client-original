@@ -9,6 +9,9 @@ class SeaList extends React.Component {
         const { handleFoodsChange } = this.props;
         handleFoodsChange('해산물');
     }
+    componentDidMount() {
+        window.scrollTo(0, 0)
+    }
     render() {
         var lists = [];
         const seaFoodDish = this.props.dish;
@@ -33,9 +36,14 @@ class SeaList extends React.Component {
         }
 
         return (
-            <div>
-                <h2>맛과 영양이 풍부한 해산물 요리!</h2>
-                {lists}
+            <div className="listTitle">
+                <div>
+                    <h2 className="listTitle">맛과 영양이 풍부한 해산물 요리!</h2>
+                </div>
+                <div>
+                    {lists}
+                </div>
+
             </div>
         )
     }
