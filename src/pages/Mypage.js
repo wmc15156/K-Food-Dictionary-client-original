@@ -163,7 +163,7 @@ class Mypage extends React.Component {
     }
     return (
       <div>
-        <h1>Mypage</h1>
+        <h1 style={{ position: "relative" , left:"600px"}}>Mypage</h1>
         <div className="favoriteFood">찜한 음식</div>
         <div className="favoritFList">
           {userinfo.length > 1 ? <Table dataSource={data} columns={columns} /> :
