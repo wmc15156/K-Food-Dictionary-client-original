@@ -86,8 +86,6 @@ class App extends React.Component {
      });
     axios.get('http://3.34.193.46:5000/user/info', { headers: { authorization: user }})
      .then((res) => {
-       console.log('res');
-       console.log(res);
        this.setState({
         email: res.data.email || res.data[0].email
        });
@@ -97,7 +95,6 @@ class App extends React.Component {
       isLogin: false
     });
    }
-   
   }
 
   render() {
