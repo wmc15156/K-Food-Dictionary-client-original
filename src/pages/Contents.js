@@ -1,17 +1,15 @@
 import React, { Component } from 'react';
-import axios from 'axios';
-
 import YTSearch from 'youtube-api-search';
 import VideoList from './ContentsPage/video_list'
 import VideoPlayer from './ContentsPage/video-player';
 import ContentsInfo from '../pages/ContentsPage/contentsInfo';
 
-const API_KEY = "/";
+const API_KEY = "AIzaSyCVcc2YmHnvG_weP2cqcTwPai5-jxPsQ_U";
 
 const lastURL = window.location.href
 class Contents extends Component {
     constructor(props) {
-       
+
         super(props);
 
         this.state = {
@@ -40,18 +38,18 @@ class Contents extends Component {
     }
 
     render() {
-      console.log('Contents',this.props);
+        console.log('Contents', this.props);
         console.log("로그인여부 :", this.props.isLogin)
 
         const { favoritPost } = this.props;
         let lasturl = window.location.href.split('/')
-        let lastFoodname = decodeURI(lasturl[4]) // 213123123/식혜
+        let lastFoodname = decodeURI(lasturl[4])
         const { findFoodIndex } = this.props;
 
         return (
             <div>
                 <VideoPlayer video={this.state.currentVideo} />
-                <button className="contents-button" onClick={() => favoritPost(lastFoodname[0])}>찜하기</button>
+                <button className="contents-button" onClick={() => favoritPost(lastFoodname)}>찜하기</button>
                 <button className="contents-button" onClick={() => this.naverShare()}>네이버공유하기</button>
                 <span className="video-list-box">
                     <VideoList

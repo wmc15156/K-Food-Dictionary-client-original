@@ -66,7 +66,7 @@ class Signup extends React.Component {
                                         this.props.history.push('/')
                                     }
                                     else if (res.status === 200) {
-                                        alert('가 입이 완료되었습니다^^')
+                                        alert('가입이 완료되었습니다^^')
                                         this.props.history.push('/login')
                                     }
                                 })

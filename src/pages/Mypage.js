@@ -5,39 +5,6 @@ import { withRouter, Link } from "react-router-dom";
 import axios from "axios";
 import 'antd/dist/antd.css';
 import { Table, Tag, Space } from 'antd';
-import styled from 'styled-components';
-
-const FoodList = styled(Table)`
-  text-align: 'middle';
-`;
-
-
-// const deleteLikeFood = (e) => {
-//   const user = JSON.parse(localStorage.getItem('user'));
-//   let data = e.target;
-//   const foodName = data.parentNode.parentElement.parentElement.parentElement.childNodes[2].textContent;
-//   axios.post('/product/likefood/delete',{ foodName: foodName},{ headers: { authorization: user } })
-//   .then((res) => {
-//     if(res.data.success) {
-//       axios.get('/user/info', { headers: { authorization: user } })
-//         .then((res) => {
-//           // 새로고침시 userInfo 정보 업데이트
-//           console.log(res.data,'res.data');
-//           if(res.data.length > 1) {
-//            this.props.updateUserInfo(res.data);
-//           }
-//         })
-//         .catch((err) => {
-//           console.log(err);
-//         });
-//     }
-    
-//   })
-//   .catch(e => {
-//     console.log(e);
-//     alert('음식정보를 지우지 못했습니다.')
-//   })
-// }
 
 axios.defaults.withCredentials = true;
 
@@ -55,27 +22,26 @@ class Mypage extends React.Component {
     const user = JSON.parse(localStorage.getItem('user'));
     let data = e.target;
     const foodName = data.parentNode.parentElement.parentElement.parentElement.childNodes[2].textContent;
-    axios.post('/product/likefood/delete',{ foodName: foodName},{ headers: { authorization: user } })
-    .then((res) => {
-      if(res.data.success) {
-        axios.get('/user/info', { headers: { authorization: user } })
-          .then((res) => {
-            // 새로고침시 userInfo 정보 업데이트
-            console.log(res.data,'res.data');
-            if(res.data.length > 1) {
-             this.props.updateUserInfo(res.data);
-            }
-          })
-          .catch((err) => {
-            console.log(err);
-          });
-      }
-      
-    })
-    .catch(e => {
-      console.log(e);
-      alert('음식정보를 지우지 못했습니다.')
-    })
+    axios.post('/product/likefood/delete', { foodName: foodName }, { headers: { authorization: user } })
+      .then((res) => {
+        if (res.data.success) {
+          axios.get('/user/info', { headers: { authorization: user } })
+            .then((res) => {
+              console.log(res.data, 'res.data');
+              if (res.data.length > 1) {
+                this.props.updateUserInfo(res.data);
+              }
+            })
+            .catch((err) => {
+              console.log(err);
+            });
+        }
+
+      })
+      .catch(e => {
+        console.log(e);
+        alert('음식정보를 지우지 못했습니다.')
+      })
   }
 
   render() {
@@ -131,7 +97,7 @@ class Mypage extends React.Component {
 
     if (this.props.isLogin === false) {
       alert('로그인 후 이용 가능합니다.');
-      document.location.href = 'http://localhost:3000/login'
+      document.location.href = 'http://k-food.s3-website.ap-northeast-2.amazonaws.com/login'
     }
 
     const userinfo = this.props.userinfo;
@@ -163,7 +129,7 @@ class Mypage extends React.Component {
     }
     return (
       <div>
-        <h1 style={{ position: "relative" , left:"600px"}}>Mypage</h1>
+        <h1 style={{ position: "relative", left: "600px" }}></h1>
         <div className="favoriteFood">찜한 음식</div>
         <div className="favoritFList">
           {userinfo.length > 1 ? <Table dataSource={data} columns={columns} /> :
