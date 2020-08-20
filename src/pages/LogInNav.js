@@ -11,12 +11,12 @@ class LogInNav extends React.Component {
         return (
             <div className="header">
                 <div className="NavBar">
-                    <Link to="/admin" className="link">{checkEmail === true ?
+                    <Link to="/admin" className="Navlink">{checkEmail === true ?
                         'Admin' :
                         null
                     }</Link>
-                    <Link to="/mypage" className="link">Mypage</Link>
-                    <Link to="/logout" className="link" >Logout</Link>
+                    <Link to="/mypage" className="Navlink">Mypage</Link>
+                    <Link to="/logout" className="Navlink" >Logout</Link>
                     <Link to="/" className="homelink">
                         <img className="mainPageLogo" src={img} alt="logo"></img>
                     </Link>
