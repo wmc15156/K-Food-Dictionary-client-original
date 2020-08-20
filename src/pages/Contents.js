@@ -5,7 +5,9 @@ import YTSearch from 'youtube-api-search';
 import VideoList from './ContentsPage/video_list'
 import VideoPlayer from './ContentsPage/video-player';
 import ContentsInfo from '../pages/ContentsPage/contentsInfo';
-const API_KEY = "AIzaSyCW3NUCA-1OVQ_fN95C0_rJxyXHGoP_EDE";
+
+const API_KEY = "/";
+
 const lastURL = window.location.href
 class Contents extends Component {
     constructor(props) {
@@ -47,15 +49,17 @@ class Contents extends Component {
         const { findFoodIndex } = this.props;
 
         return (
-
             <div>
                 <VideoPlayer video={this.state.currentVideo} />
-                <ContentsInfo dish={this.props.dish} lastFoodname={lastFoodname} findFoodIndex={findFoodIndex} />
-                <button onClick={() => favoritPost(lastFoodname)} className="favoritBt">찜하기</button>
-                <button onClick={() => this.naverShare()}>네이버공유하기</button>
-                <VideoList
-                    onVideoSelect={userSelected => this.setState({ currentVideo: userSelected })}
-                    videos={this.state.videos} />
+                <button className="contents-button" onClick={() => favoritPost(lastFoodname[0])}>찜하기</button>
+                <button className="contents-button" onClick={() => this.naverShare()}>네이버공유하기</button>
+                <span className="video-list-box">
+                    <VideoList
+                        onVideoSelect={userSelected => this.setState({ currentVideo: userSelected })}
+                        videos={this.state.videos} />
+                    <ContentsInfo dish={this.props.dish} lastFoodname={lastFoodname} findFoodIndex={findFoodIndex} />
+                </span>
+
             </div>
         );
     }
